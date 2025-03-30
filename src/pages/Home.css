@@ -1,0 +1,251 @@
+.home {
+  min-height: 100vh;
+}
+
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+  position: relative;
+  overflow: hidden;
+  background-color: black;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 10% center;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.hero-content {
+  max-width: 800px;
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cta-button {
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.cta-button.secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.skills-section {
+  padding: 5rem 2rem;
+  background-color: var(--background-color);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skill-category {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.skill-category:hover {
+  transform: translateY(-5px);
+}
+
+.skill-category h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.skill-category ul {
+  list-style: none;
+  padding: 0;
+}
+
+.skill-category li {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.highlights-section {
+  padding: 5rem 2rem;
+  background-color: var(--background-color);
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.highlight-card {
+  background-color: white;
+  padding: 0;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight-image {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.highlight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover .highlight-image img {
+  transform: scale(1.05);
+}
+
+.highlight-card h3 {
+  color: var(--secondary-color);
+  margin: 1.5rem 1.5rem 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.highlight-card p {
+  color: var(--text-color);
+  margin: 0 1.5rem 1.5rem;
+  line-height: 1.6;
+}
+
+.highlight-link {
+  color: var(--secondary-color);
+  font-weight: 600;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  margin: 0 1.5rem 1.5rem;
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.highlight-card:hover .highlight-link {
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .highlight-image {
+    aspect-ratio: 1;
+  }
+  
+  .highlight-card {
+    padding: 0;
+  }
+} 

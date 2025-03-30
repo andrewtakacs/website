@@ -1,0 +1,97 @@
+.oscilloscope-page {
+  padding-top: 80px;
+  min-height: 100%;
+  background-color: var(--background-color);
+}
+
+.oscilloscope-hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: var(--text-color);
+  margin-bottom: 3rem;
+}
+
+.oscilloscope-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.oscilloscope-section {
+  margin-bottom: 4rem;
+}
+
+.oscilloscope-section h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.oscilloscope-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--secondary-color);
+}
+
+.oscilloscope-section h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.oscilloscope-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.oscilloscope-text p {
+  margin-bottom: 1.5rem;
+}
+
+.oscilloscope-text ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.oscilloscope-text li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.oscilloscope-text li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .oscilloscope-hero {
+    padding: 3rem 1rem;
+  }
+
+  .oscilloscope-content {
+    padding: 0 1rem;
+  }
+
+  .oscilloscope-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .oscilloscope-section h3 {
+    font-size: 1.3rem;
+  }
+
+  .oscilloscope-text {
+    font-size: 1rem;
+  }
+} 

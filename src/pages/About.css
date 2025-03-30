@@ -1,0 +1,284 @@
+.about-page {
+  padding-top: 80px;
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+
+.about-hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: var(--text-color);
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.about-section {
+  margin-bottom: 4rem;
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.about-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--secondary-color);
+}
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.education-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+}
+
+.education-card h3 {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.education-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.education-card h4[data-school="University of Washington"] {
+  color: #32006e;
+}
+
+.education-card h4[data-school="Washington State University"] {
+  color: #A60F2D;
+}
+
+.education-card h4[data-school="Bellevue College"] {
+  color: #003d79;
+}
+
+.education-card .period {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.education-card .description {
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.experience-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+}
+
+.experience-header {
+  margin-bottom: 1.5rem;
+}
+
+.experience-card h3 {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.experience-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+/* Company-specific colors */
+.experience-card h4[data-company="University of Washington"] {
+  color: #4B2E83; /* UW Purple */
+}
+
+.experience-card h4[data-company="Washington State University"] {
+  color: #981E32; /* WSU Crimson */
+}
+
+.experience-card h4[data-company="Titan Electric"] {
+  color: #f09c00; /* Titan Electric's brand color */
+}
+
+.experience-card h4[data-company="BNBuilders"] {
+  color: #0055A4; /* BNBuilders' brand color */
+}
+
+.experience-card .location {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.experience-card .period {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.experience-description {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  color: var(--text-color);
+}
+
+.experience-description li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.experience-description a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.experience-description a:hover {
+  opacity: 0.8;
+}
+
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.skills-column h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.skills-column ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.skills-column li {
+  background: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+}
+
+.skills-column li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: var(--primary-color);
+  color: white;
+}
+
+.certificate-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.certificate-link:hover {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 3rem 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .about-content {
+    padding: 0 1rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.75rem;
+  }
+
+  .education-grid,
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-column ul {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}

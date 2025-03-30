@@ -1,0 +1,339 @@
+.ai-projects-page {
+  padding-top: 80px;
+  background-color: var(--background-color);
+  min-height: 100%;
+  position: relative;
+}
+
+.ai-projects-hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: var(--text-color);
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.ai-projects-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+}
+
+.ai-projects-section {
+  margin-bottom: 2rem;
+}
+
+.ai-projects-section h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.ai-projects-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--secondary-color);
+}
+
+.ai-projects-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.ai-projects-text p {
+  margin-bottom: 1rem;
+}
+
+.math-content {
+  margin: 0;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+}
+
+.math-content.expanded {
+  max-height: 1000px;
+  transition: max-height 1s ease-in;
+  padding-bottom: 1rem;
+}
+
+.project-collapsible {
+  margin: 2rem 0;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.project-header:hover {
+  background-color: rgba(195, 207, 226, 0.2);
+}
+
+.project-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+.project-content {
+  display: none;
+  background-color: var(--background-color);
+  padding: 0;
+}
+
+.project-content.expanded {
+  display: block;
+}
+
+.project-content .ai-projects-text {
+  padding: 1rem;
+}
+
+.collapse-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+}
+
+.collapse-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.collapsible-section {
+  border: 1px solid rgba(195, 207, 226, 0.3);
+  border-radius: 6px;
+  width: calc(100%);
+  overflow: hidden; 
+}
+
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(195, 207, 226, 0.05);
+  cursor: pointer;
+}
+
+.collapsible-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--primary-color);
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0;
+  margin: 0.5rem 0 !important;
+}
+
+.katex {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.ai-projects-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ai-projects-image img {
+  max-width: 60%;
+  height: auto;
+}
+
+.image-caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.side-by-side-images {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.side-by-side-images .image-container {
+  flex: 1;
+  max-width: 48%;
+}
+
+.side-by-side-images .ai-projects-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.side-by-side-images .image-caption {
+  margin-bottom: 0;
+}
+
+.line-break {
+  height: 2rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card h3 {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  color: var(--text-color);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech-tag {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-link {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.project-link:hover {
+  color: var(--primary-color);
+}
+
+.complexity-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  color: white;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .ai-projects-hero {
+    padding: 3rem 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .ai-projects-content {
+    padding: 0 1rem;
+  }
+
+  .ai-projects-section h2 {
+    font-size: 1.75rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Responsive math styling for mobile */
+  .katex {
+    font-size: 0.9rem;
+  }
+
+  .katex-display > .katex {
+    white-space: nowrap;
+  }
+
+  .katex-display {
+    padding: 0.5rem 0;
+  }
+
+  .math-content {
+    margin: 1rem 0;
+  }
+
+  /* Ensure inline math scales properly */
+  .math-text .katex {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .katex {
+    font-size: 0.8rem;
+  }
+
+  .math-text .katex {
+    font-size: 0.8rem;
+  }
+} 

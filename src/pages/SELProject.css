@@ -1,0 +1,97 @@
+.sel-page {
+  padding-top: 80px;
+  min-height: 100%;
+  background-color: var(--background-color);
+}
+
+.sel-hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: var(--text-color);
+  margin-bottom: 3rem;
+}
+
+.sel-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sel-section {
+  margin-bottom: 4rem;
+}
+
+.sel-section h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.sel-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--secondary-color);
+}
+
+.sel-section h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.sel-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.sel-text p {
+  margin-bottom: 1.5rem;
+}
+
+.sel-text ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.sel-text li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.sel-text li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .sel-hero {
+    padding: 3rem 1rem;
+  }
+
+  .sel-content {
+    padding: 0 1rem;
+  }
+
+  .sel-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .sel-section h3 {
+    font-size: 1.3rem;
+  }
+
+  .sel-text {
+    font-size: 1rem;
+  }
+} 
