@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, NavLink } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Navbar = () => {
   }, []);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsOpen(!isOpen);
   };
 
   const navLinks = [
@@ -31,24 +31,22 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        <button className={`mobile-menu-button ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
+        <button className="mobile-menu-button" onClick={toggleMenu}>
+          {isOpen ? '✕' : '☰'}
         </button>
-        <ul className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
+
+        <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
           {navLinks.map((link) => (
-            <li key={link.path}>
-              <Link
-                to={link.path}
-                className={location.pathname === link.path ? 'active' : ''}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            </li>
+            <NavLink
+              key={link.path}
+              to={link.path}
+              className={({ isActive }) => isActive ? 'active' : ''}
+              onClick={() => setIsOpen(false)}
+            >
+              {link.label}
+            </NavLink>
           ))}
-        </ul>
+        </div>
       </div>
     </nav>
   );

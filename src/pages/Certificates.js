@@ -6,10 +6,10 @@ const Certificates = () => {
     <div className="certificates-page">
       <div className="certificates-container">
         <div className="certificate-card">
-          <img src="/images/Certificate_1.jpg" alt="Certificate 1" />
+          <img src={`${process.env.PUBLIC_URL}/images/Certificate_1.jpg`} alt="Certificate 1" />
         </div>
         <div className="certificate-card">
-          <img src="/images/Certificate_2.jpg" alt="Certificate 2" />
+          <img src={`${process.env.PUBLIC_URL}/images/Certificate_2.jpg`} alt="Certificate 2" />
         </div>
       </div>
     </div>

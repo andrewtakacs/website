@@ -164,6 +164,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
 }
 
 .highlight-image {
@@ -208,6 +209,7 @@
 .highlight-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
 }
 
 .highlight-card:hover .highlight-link {

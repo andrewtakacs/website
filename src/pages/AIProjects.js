@@ -65,7 +65,7 @@ const AIProjects = () => {
                 The submarine data was captured every 30 minutes for 24 hours. The data captured is a broad spectrum recording of the acoustic pressure data  sampled on a uniform grid with a size of 64 x 64 x 64. Giving four dimensions of data, time, x, y, and z. The size of the data is 12.8 million points of data. When plotting the data before any math is applied, it is a chaotic mess. Try to find the submarine in the plot below!
               </p>
               <div className="ai-projects-image">
-                <img src="/images/PJ1Sub.png" alt="Submarine Data Visualization" />
+                <img src={`${process.env.PUBLIC_URL}/images/PJ1Sub.png`} alt="Submarine Data Visualization" />
               </div>
               <h4 className="image-caption">Project 1: Submarine Data Before</h4>
               
@@ -198,12 +198,12 @@ const AIProjects = () => {
             
             <h3>Results</h3>
             <div className="ai-projects-image">
-              <img src="/images/PJ1SubFreq.png" alt="Submarine Frequency Analysis" />
+              <img src={`${process.env.PUBLIC_URL}/images/PJ1SubFreq.png`} alt="Submarine Frequency Analysis" />
             </div>
             <h4 className="image-caption">Project 1: Submarine Frequency Analysis</h4>
 
             <div className="ai-projects-image">
-              <img src="/images/PJ1SubPath.png" alt="Submarine Path Visualization" />
+              <img src={`${process.env.PUBLIC_URL}/images/PJ1SubPath.png`} alt="Submarine Path Visualization" />
             </div>
             <h4 className="image-caption">Project 1: Submarine Path</h4>
             <div className="math-text">
@@ -234,7 +234,7 @@ const AIProjects = () => {
                 The movements of the robot joints are captured as Euler Angles through 38 sensors. There are 5 recorded samples of 3 unique movements of the robot. The movements are walking, running and jumping. Each movement was sampled for 1.4 seconds.
               </p>
               <div className="ai-projects-image">
-                <img src="/images/PJ2RobotRun.gif" alt="Humanoid Robot Running" />
+                <img src={`${process.env.PUBLIC_URL}/images/PJ2RobotRun.gif`} alt="Humanoid Robot Running" />
               </div>
               <h4 className="image-caption">Project 2: Sample of Humanoid Robot Running</h4>
 
@@ -288,14 +288,14 @@ const AIProjects = () => {
                   \text{Cumulative Energy} = \frac{\sum_{i=1}^{k} \sigma_i^2}{\sum_{i=1}^{n} \sigma_i^2}
                 `} />
                 <div className="ai-projects-image">
-                  <img src="/images/PJ2PCmodes.png" alt="Plotting Cumulative Energy" />
+                  <img src={`${process.env.PUBLIC_URL}/images/PJ2PCmodes.png`} alt="Plotting Cumulative Energy" />
                 </div>
                 <h4 className="image-caption">Project 2: Plotting Cumulative Energy</h4>
                 <div className="math-text">
                   Where <InlineMath math="\sigma_i" /> is the i-th singular value, <InlineMath math="k" /> is the number of principal components, and <InlineMath math="n" /> is the total number of singular values. By plotting the cumulative energy against the number of principal components, we can visualize how much of the total variance is captured by the principal components.
                 </div>
                 <div className="ai-projects-image">
-                  <img src="/images/PJ2PCModesReduced.png" alt="Reduced Data Visualization" />
+                  <img src={`${process.env.PUBLIC_URL}/images/PJ2PCModesReduced.png`} alt="Reduced Data Visualization" />
                 </div>
                 <h4 className="image-caption">Project 2: Reduced Data Visualization</h4>
                 <div className="math-text">
@@ -363,7 +363,7 @@ const AIProjects = () => {
               <h3>Results</h3>
               <div className="math-text">
               <div className="ai-projects-image">
-                <img src="/images/PJ2PCModes.png" alt="Principal Component Modes" />
+                <img src={`${process.env.PUBLIC_URL}/images/PJ2PCmodes.png`} alt="Principal Component Modes" />
               </div>
               <h4 className="image-caption">Project 2: Plotting Cumulative Energy</h4>
               <div className="math-text">
@@ -373,14 +373,14 @@ const AIProjects = () => {
               <h4 className="image-caption">Project 2: Reduced Data Visualization</h4>
 
               <div className="ai-projects-image">
-                <img src="/images/PJ2PCMode2.png" alt="Class 2 Visualization" />
+                <img src={`${process.env.PUBLIC_URL}/images/PJ2PCMode2.png`} alt="Class 2 Visualization" />
               </div>
               <h4 className="image-caption">Project 2: PC Mode 2 Visualization</h4>
               <div className="math-text">
                 This image shows the visualization of the robot's movement in only 2 dimensions with the centroids plotted for each movement.
               </div>
               <div className="ai-projects-image">
-                <img src="/images/PJ2PCModes3.png" alt="Class 3 Visualization" />
+                <img src={`${process.env.PUBLIC_URL}/images/PJ2PCModes3.png`} alt="Class 3 Visualization" />
               </div>
               <h4 className="image-caption">Project 2: PC Mode 3 Visualization</h4>
               <div className="math-text">
@@ -389,13 +389,13 @@ const AIProjects = () => {
               <div className="side-by-side-images">
                 <div className="image-container">
                   <div className="ai-projects-image">
-                    <img src="/images/PJ2Class1.png" alt="Class 1 Visualization" />
+                    <img src={`${process.env.PUBLIC_URL}/images/PJ2Class1.png`} alt="Class 1 Visualization" />
                   </div>
                   <h4 className="image-caption">Project 2: Class 1 Visualization</h4>
                 </div>
                 <div className="image-container">
                   <div className="ai-projects-image">
-                    <img src="/images/PJ2Class2.png" alt="Class 2 Visualization" />
+                    <img src={`${process.env.PUBLIC_URL}/images/PJ2Class2.png`} alt="Class 2 Visualization" />
                   </div>
                   <h4 className="image-caption">Project 2: Class 2 Visualization</h4>
                 </div>
@@ -553,7 +553,7 @@ const AIProjects = () => {
               <h3>Results</h3>
               <div className="math-text">
                 <div className="ai-projects-image">
-                  <img src="/images/PJ3MNISTenergy.png" alt="MNIST Classification Result 1" />
+                  <img src={`${process.env.PUBLIC_URL}/images/PJ3MNISTenergy.png`} alt="MNIST Classification Result 1" />
                 </div>
                 <h4 className="image-caption">Project 3: MNIST Energy Plot</h4>
                 <p>
@@ -561,28 +561,28 @@ const AIProjects = () => {
                 </p>
 
                 <div className="ai-projects-image">
-                  <img src="/images/PJ3MNIST16.png" alt="MNIST Classification Result 2" />
+                  <img src={`${process.env.PUBLIC_URL}/images/PJ3MNIST16.png`} alt="MNIST Classification Result 2" />
                 </div>
                 <h4 className="image-caption">Project 3: MNIST Classification Result 2</h4>
                 <p>
                 Above is the image output of the first 16 PC modes as 28 by 28 images. This can be thought as the most significant patterns or features within the dataset. This is because the first PC mode captures the most variation and the second PC mode captures the second and so on. So, The PC modes being seen are the 16 most important features of the dataset. Earlier modes can be seen to be strokes and loops where latter PC modes might capture the variations within how someone would write a specific number.
                 </p>
                 <div className="ai-projects-image">
-                  <img src="/images/PJ3Recon.png" alt="MNIST Classification Result 3" />
+                  <img src={`${process.env.PUBLIC_URL}/images/PJ3Recon.png`} alt="MNIST Classification Result 3" />
                 </div>
                 <h4 className="image-caption">Project 3: MNIST Reconstruction with various PC Modes</h4>
                 <p>
                 When reducing the PC modes to low values seen when k = 1 and k = 3, it shows how images are extremely blurry and barely recognizable. This means the first few PC modes capture coarse global features, but they lack a detailed structure. At moderate k values such as k = 59, the digits become much more distinguishable. The images are still somewhat blurry, but the major strokes and shapes are evident. At high k values such as k = 184 the digits are nearly reconstructed fully while retaining finer details. Lastly, at the full construction when k = 784, these outputs an identical recreation of the original image.
                 </p>
                 <div className="ai-projects-image">
-                  <img src="/images/PJ3Confusion.png" alt="MNIST Classification Result 4" />
+                  <img src={`${process.env.PUBLIC_URL}/images/PJ3Confusion.png`} alt="MNIST Classification Result 4" />
                 </div>
                 <h4 className="image-caption">Project 3: MNIST Confusion Matrix</h4>
                 <p>
                 For each classifier, a confusion matrix can be constructed to evaluate the model's performance. This matrix compares the actual cases to the predicted cases. The diagonal cells represent the correct predictions, while the off diagonal cells indicate incorrect predictions. For example, in the Ridge classifier's confusion matrix, row 9 and column 0 show that 19 samples were incorrectly predicted as 0 when the true label was 9. Another method to compare classifiers is metrics like precision, recall, and the F1-score:
                 </p>
                 <div className="ai-projects-image">
-                  <img src="/images/PJ3Table.png" alt="MNIST Table" />
+                  <img src={`${process.env.PUBLIC_URL}/images/PJ3Table.png`} alt="MNIST Table" />
                 </div>
                 <h4 className="image-caption">Project 3: Classifier Metrics</h4>
                 <h3>Summary</h3>
@@ -735,13 +735,13 @@ const AIProjects = () => {
               <div className="side-by-side-images">
                 <div className="image-container">
                   <div className="ai-projects-image">
-                    <img src="/images/PJ4Digit.png" alt="Digit Classification Result" />
+                    <img src={`${process.env.PUBLIC_URL}/images/PJ4Digit.png`} alt="Digit Classification Result" />
                   </div>
                   <h4 className="image-caption">Project 4: Digit MNIST Classification Result</h4>
                 </div>
                 <div className="image-container">
                   <div className="ai-projects-image">
-                    <img src="/images/PJ4Fashion.png" alt="Fashion MNIST Classification Result" />
+                    <img src={`${process.env.PUBLIC_URL}/images/PJ4Fashion.png`} alt="Fashion MNIST Classification Result" />
                   </div>
                   <h4 className="image-caption">Project 4: Fashion MNIST Classification Result</h4>
                 
@@ -832,8 +832,8 @@ const AIProjects = () => {
               </div>
               <div className="ai-projects-images-side-by-side">
                 <div className="ai-projects-image">
-                  <img src="/images/PJ5Map2.png" alt="Fashion MNIST Classification Result" />
-                  <img src="/images/PJ5Map3.png" alt="Fashion MNIST Classification Result" />
+                  <img src={`${process.env.PUBLIC_URL}/images/PJ5Map2.png`} alt="Fashion MNIST Classification Result" />
+                  <img src={`${process.env.PUBLIC_URL}/images/PJ5Map3.png`} alt="Fashion MNIST Classification Result" />
                 </div>
                 <div className="ai-projects-image">
                 </div>
@@ -844,7 +844,7 @@ const AIProjects = () => {
               </div>
 
               <div className="ai-projects-image">
-                <img src="/images/PJ5FCN.png" alt="CNN Result" />
+                <img src={`${process.env.PUBLIC_URL}/images/PJ5FCN.png`} alt="CNN Result" />
               </div>
               <h4 className='image-caption'> Project 5: FCN Results</h4>
               <div className="math-text">
@@ -852,7 +852,7 @@ const AIProjects = () => {
               </div>
               <div className="line-break"></div>
               <div className="ai-projects-image">
-                <img src="/images/PJ5CNN.png" alt="CNN Result" />
+                <img src={`${process.env.PUBLIC_URL}/images/PJ5CNN.png`} alt="CNN Result" />
               </div>
               <h4 className='image-caption'> Project 5: CNN Results</h4>
               <div className="math-text">

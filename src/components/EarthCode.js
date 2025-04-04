@@ -15,7 +15,7 @@ const EarthCode = () => {
       
       // Loop through the frames and load them
       for (let i = 1; i <= totalFrames; i++) {
-        const response = await fetch(`/earthframes/earth${i}.txt`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/earthframes/earth${i}.txt`);
         const text = await response.text();
         frames.push(text);
       }

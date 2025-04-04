@@ -7,37 +7,37 @@ const Projects = () => {
     {
       title: "AI Projects",
       description: "Various AI projects I have worked on",
-      image: "/images/ai-project.jpeg",
+      image: `${process.env.PUBLIC_URL}/images/ai-project.jpeg`,
       link: "/ai-projects"
     },
     {
       title: "Portfolio Website",
       description: "This website you are currently on!",
-      image: "/images/website.png",
+      image: `${process.env.PUBLIC_URL}/images/website.png`,
       link: "/projects/portfolio-website"
     },
     {
       title: "Fuel Cell Electric Vehicle eMotor Transmission Fixture",
       description: "A fuel cell electric vehicle eMotor transmission fixture I designed and built for my capstone project at Washington State University.",
-      image: "/images/eMotor.png",
+      image: `${process.env.PUBLIC_URL}/images/eMotor.png`,
       link: "/emotor-project"
     },
     {
       title: "Amazon Drone Bracket FEA",
       description: "A finite element analysis and topology optimization project I completed at Washington State University.",
-      image: "/images/amazon.jpg",
+      image: `${process.env.PUBLIC_URL}/images/amazon.jpg`,
       link: "/amazon-fea"
     },
     {
       title: "Oscilloscope",
       description: "Oscilloscope code and art I designed",
-      image: "/images/Osci.jpg",
+      image: `${process.env.PUBLIC_URL}/images/Osci.jpg`,
       link: "/oscilloscope"
     },
     {
       title: "Schweitzer Engineering Laboratories Manufacturing Improvement",
       description: "A manufacturing improvement project I completed for Schweitzer Engineering Laboratories.",
-      image: "/images/SEL.png",
+      image: `${process.env.PUBLIC_URL}/images/SEL.png`,
       link: "/sel-project"
     },
    
