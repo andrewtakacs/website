@@ -8,29 +8,34 @@
       "type": "image/x-icon"
     },
     {
-      "src": "favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
-    },
-    {
-      "src": "favicon-32x32.png",
-      "sizes": "32x32",
-      "type": "image/png"
-    },
-    
-    {
       "src": "logo192.png",
       "type": "image/png",
       "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "description": "Portfolio website of Andrew Takacs, Aerospace Engineering student at the University of Washington",
+  "orientation": "portrait",
+  "scope": "/",
+  "dir": "ltr",
+  "lang": "en-US",
+  "categories": ["portfolio", "personal", "education"],
+  "screenshots": [],
+  "iarc_rating_id": "",
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "About Me",
+      "url": "/about",
+      "description": "Learn more about Andrew Takacs"
+    },
+    {
+      "name": "Projects",
+      "url": "/projects",
+      "description": "View Andrew's projects"
+    }
+  ]
 }
