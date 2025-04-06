@@ -16,7 +16,6 @@ https://andrewtakacs.com/*  https://www.andrewtakacs.com/:splat  301!
 
 # Handle static files
 /static/*  /static/:splat  200
-/favicon.ico  /favicon.ico  200
 /manifest.json  /manifest.json  200
 
 # Handle 404s
