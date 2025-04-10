@@ -234,7 +234,7 @@ const AIProjects = () => {
                 The movements of the robot joints are captured as Euler Angles through 38 sensors. There are 5 recorded samples of 3 unique movements of the robot. The movements are walking, running and jumping. Each movement was sampled for 1.4 seconds.
               </p>
               <div className="ai-projects-image">
-                <img src={`${process.env.PUBLIC_URL}/images/PJ2RobotRun.gif`} alt="Humanoid Robot Running" />
+                <img src={`${process.env.PUBLIC_URL}/images/nice.gif`} alt="Humanoid Robot Running" />
               </div>
               <h4 className="image-caption">Project 2: Sample of Humanoid Robot Running</h4>
 
@@ -288,7 +288,7 @@ const AIProjects = () => {
                   \text{Cumulative Energy} = \frac{\sum_{i=1}^{k} \sigma_i^2}{\sum_{i=1}^{n} \sigma_i^2}
                 `} />
                 <div className="ai-projects-image">
-                  <img src={`${process.env.PUBLIC_URL}/images/PJ2PCmodes.png`} alt="Plotting Cumulative Energy" />
+                  <img src={`${process.env.PUBLIC_URL}/images/PJ2PCModes.png`} alt="Plotting Cumulative Energy" />
                 </div>
                 <h4 className="image-caption">Project 2: Plotting Cumulative Energy</h4>
                 <div className="math-text">
@@ -363,7 +363,7 @@ const AIProjects = () => {
               <h3>Results</h3>
               <div className="math-text">
               <div className="ai-projects-image">
-                <img src={`${process.env.PUBLIC_URL}/images/PJ2PCmodes.png`} alt="Principal Component Modes" />
+                <img src={`${process.env.PUBLIC_URL}/images/PJ2PCModes.png`} alt="Principal Component Modes" />
               </div>
               <h4 className="image-caption">Project 2: Plotting Cumulative Energy</h4>
               <div className="math-text">
