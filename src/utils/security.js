@@ -7,9 +7,6 @@ export const SecurityHeaders = ({ title, description }) => {
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="canonical" href={window.location.href} />
-      <link rel="preconnect" href="https://github.com" />
-      <link rel="preconnect" href="https://linkedin.com" />
     </Helmet>
   );
 };
