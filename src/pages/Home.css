@@ -190,12 +190,14 @@
   margin: 1.5rem 1.5rem 0.5rem;
   font-size: 1.5rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .highlight-card p {
   color: var(--text-color);
   margin: 0 1.5rem 1.5rem;
   line-height: 1.6;
+  text-align: center;
 }
 
 .highlight-link {

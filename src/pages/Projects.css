@@ -8,11 +8,45 @@
   text-align: center;
 }
 
+.projects-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.filter-button {
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.filter-button:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.filter-button.active {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 4rem 2rem;
+  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -32,7 +66,7 @@
 .project-image {
   position: relative;
   width: 100%;
-  padding-top: 100%; /* This makes the image container square */
+  padding-top: 100%;
   overflow: hidden;
 }
 
@@ -43,12 +77,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
-.project-card:hover .project-image img {
-  filter: blur(3px) brightness(0.7);
-  transform: scale(1.1);
+.project-image.in-view img {
+  filter: blur(3px);
+  transform: scale(1.05);
 }
 
 .project-image::after {
@@ -62,13 +96,13 @@
   font-weight: bold;
   text-align: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
   z-index: 1;
   width: 90%;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.project-card:hover .project-image::after {
+.project-image.in-view::after {
   opacity: 1;
 }
 
@@ -136,13 +170,33 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .projects-hero {
+    padding: 3rem 1rem;
+  }
+
+  .projects-filters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    padding: 1rem;
+    max-width: 400px;
+  }
+
+  .filter-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 100%;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
-    padding: 2rem 1rem;
+    padding: 1rem;
+    gap: 1.5rem;
   }
 
   .project-image {
-    padding-top: 100%; /* Maintain square aspect ratio on smaller screens */
+    padding-top: 100%;
   }
 
   .project-content {
@@ -157,14 +211,28 @@
     font-size: 0.9rem;
   }
 
-  .category-links {
-    flex-direction: column;
-    align-items: center;
+  .project-image::after {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-hero {
+    padding: 2rem 1rem;
   }
 
-  .category-link {
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
+  .projects-filters {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .filter-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .project-image::after {
+    font-size: 1.3rem;
   }
 }

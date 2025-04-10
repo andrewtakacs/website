@@ -38,14 +38,14 @@ const Home = () => {
               <img src={`${process.env.PUBLIC_URL}/images/ai-project.jpeg`} alt="AI Project" />
             </div> 
             <h3>AI Projects</h3>
-            <p>Some of my AI and machine learning projects</p>
+            <p>Some AI and machine learning projects</p>
           </Link>
           <Link to="/research" className="highlight-card">
             <div className="highlight-image">
               <img src={`${process.env.PUBLIC_URL}/images/uw-research.jpeg`} alt="UW Research" />
             </div>
             <h3>Research</h3>
-            <p>What my thesis will be about</p>
+            <p>My work in the lab</p>
           </Link>
           <a href="https://dailyevergreen.com/176511/life/wsu-senior-aspires-to-make-the-world-a-better-place/" target="_blank" rel="noopener noreferrer" className="highlight-card">
             <div className="highlight-image">
