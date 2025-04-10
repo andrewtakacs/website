@@ -234,7 +234,7 @@ const AIProjects = () => {
                 The movements of the robot joints are captured as Euler Angles through 38 sensors. There are 5 recorded samples of 3 unique movements of the robot. The movements are walking, running and jumping. Each movement was sampled for 1.4 seconds.
               </p>
               <div className="ai-projects-image">
-                <img src={`${process.env.PUBLIC_URL}/images/nice.gif`} alt="Humanoid Robot Running" />
+                <img src={`${process.env.PUBLIC_URL}/images/PJ2RobotRun.gif`} alt="Humanoid Robot Running" />
               </div>
               <h4 className="image-caption">Project 2: Sample of Humanoid Robot Running</h4>
 
