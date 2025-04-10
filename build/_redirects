@@ -1,0 +1,23 @@
+# Force HTTPS
+http://*  https://:splat  301!
+http://www.*  https://www.:splat  301!
+
+# Handle www subdomain
+https://andrewtakacs.com/*  https://www.andrewtakacs.com/:splat  301!
+
+# Security Headers
+/*  /:splat
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; frame-ancestors 'none';
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# Handle static files
+/static/*  /static/:splat  200
+/manifest.json  /manifest.json  200
+
+# Handle 404s
+/*  /404.html  404
+/index.html  /  301 
