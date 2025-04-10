@@ -20,6 +20,18 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isOpen && !event.target.closest('.navbar-container')) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen]);
+
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
@@ -31,11 +43,17 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        <button className="mobile-menu-button" onClick={toggleMenu}>
-          {isOpen ? '✕' : '☰'}
+        <button 
+          className={`mobile-menu-button ${isOpen ? 'open' : ''}`} 
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
 
-        <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
+        <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
             <NavLink
               key={link.path}

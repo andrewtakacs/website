@@ -12,6 +12,8 @@ import EMotorProject from './pages/EMotorProject';
 import AmazonFEA from './pages/AmazonFEA';
 import Oscilloscope from './pages/Oscilloscope';
 import SELProject from './pages/SELProject';
+import Research from './pages/Research';
+import Certificates from './pages/Certificates';
 import './App.css';
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
           <Route path="/amazon-fea" element={<AmazonFEA />} />
           <Route path="/oscilloscope" element={<Oscilloscope />} />
           <Route path="/sel-project" element={<SELProject />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/certificates" element={<Certificates />} />
         </Routes>
       </div>
     </Router>
