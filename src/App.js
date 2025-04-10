@@ -6,6 +6,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import AIProjects from './pages/AIProjects';
+import Other from './pages/Other';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/ai-projects" element={<AIProjects />} />
+          <Route path="/other" element={<Other />} />
         </Routes>
       </div>
     </Router>
