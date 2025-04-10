@@ -7,6 +7,11 @@ import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import AIProjects from './pages/AIProjects';
 import Other from './pages/Other';
+import PortfolioWebsite from './pages/PortfolioWebsite';
+import EMotorProject from './pages/EMotorProject';
+import AmazonFEA from './pages/AmazonFEA';
+import Oscilloscope from './pages/Oscilloscope';
+import SELProject from './pages/SELProject';
 import './App.css';
 
 function App() {
@@ -21,6 +26,11 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/ai-projects" element={<AIProjects />} />
           <Route path="/other" element={<Other />} />
+          <Route path="/projects/portfolio-website" element={<PortfolioWebsite />} />
+          <Route path="/emotor-project" element={<EMotorProject />} />
+          <Route path="/amazon-fea" element={<AmazonFEA />} />
+          <Route path="/oscilloscope" element={<Oscilloscope />} />
+          <Route path="/sel-project" element={<SELProject />} />
         </Routes>
       </div>
     </Router>
