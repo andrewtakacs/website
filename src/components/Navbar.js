@@ -41,7 +41,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${location.pathname === '/secret' ? 'secret-page' : ''}`}>
       <div className="navbar-container">
         <button 
           className={`mobile-menu-button ${isOpen ? 'open' : ''}`} 

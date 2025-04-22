@@ -7,6 +7,7 @@ import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import AIProjects from './pages/AIProjects';
 import Other from './pages/Other';
+import SecretPage from './pages/SecretPage';
 import PortfolioWebsite from './pages/PortfolioWebsite';
 import EMotorProject from './pages/EMotorProject';
 import AmazonFEA from './pages/AmazonFEA';
@@ -28,6 +29,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/ai-projects" element={<AIProjects />} />
           <Route path="/other" element={<Other />} />
+          <Route path="/secret" element={<SecretPage />} />
           <Route path="/projects/portfolio-website" element={<PortfolioWebsite />} />
           <Route path="/emotor-project" element={<EMotorProject />} />
           <Route path="/amazon-fea" element={<AmazonFEA />} />

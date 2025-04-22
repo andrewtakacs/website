@@ -22,28 +22,22 @@
   margin-bottom: 4rem;
 }
 
-.oscilloscope-section h2 {
-  font-size: 2rem;
-  color: var(--primary-color);
-  margin-bottom: 1.5rem;
-  position: relative;
-  padding-bottom: 0.5rem;
+.oscilloscope-display {
+  background: #000;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.oscilloscope-section h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background-color: var(--secondary-color);
-}
-
-.oscilloscope-section h3 {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
+.oscilloscope-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .oscilloscope-text {
@@ -74,6 +68,29 @@
   color: var(--secondary-color);
 }
 
+.oscilloscope-section h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.oscilloscope-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--secondary-color);
+}
+
+.oscilloscope-section h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
 @media (max-width: 768px) {
   .oscilloscope-hero {
     padding: 3rem 1rem;
@@ -93,5 +110,10 @@
 
   .oscilloscope-text {
     font-size: 1rem;
+  }
+
+  .oscilloscope-controls {
+    flex-direction: column;
+    align-items: stretch;
   }
 } 

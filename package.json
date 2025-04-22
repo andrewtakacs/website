@@ -95,7 +95,8 @@
     "@rushstack/eslint-patch": "^1.11.0",
     "eslint": "^8.57.1",
     "eslint-config-react-app": "^7.0.1",
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "parent-module": "^3.1.0"
   },
   "future": {
     "v7_startTransition": true,
