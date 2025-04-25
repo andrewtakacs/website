@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './OscilloscopeDisplay.css';
 
-const AnalogVsDigitalDisplay = ({ width = 800, height = 400 }) => {
+const AnalogVsDigitalDisplay = ({ width = 800, height = 400, steps = 16 }) => {
   const canvasRef = useRef(null);
   const [time, setTime] = useState(0);
 
@@ -30,17 +30,6 @@ const AnalogVsDigitalDisplay = ({ width = 800, height = 400 }) => {
     ctx.textAlign = 'left';
     ctx.font = '12px Arial';
     
-    // Draw X-axis labels
-    for (let x = 0; x <= width; x += width / 10) {
-      const label = ((x / width) * 10 - 5).toFixed(1);
-      ctx.fillText(label, x - 10, height + 20);
-    }
-    
-    // Draw Y-axis labels
-    for (let y = 0; y <= height; y += height / 10) {
-      const label = ((1 - y / height) * 2 - 1).toFixed(1);
-      ctx.fillText(label, -30, y + 4);
-    }
   };
 
   const drawAnalogSignal = (ctx, width, height) => {
@@ -48,7 +37,7 @@ const AnalogVsDigitalDisplay = ({ width = 800, height = 400 }) => {
     ctx.lineWidth = 2;
     ctx.beginPath();
 
-    const amplitude = height / 2;
+    const amplitude = height / 2.5;
     const frequency = 2;
     const phase = time;
 
@@ -69,25 +58,24 @@ const AnalogVsDigitalDisplay = ({ width = 800, height = 400 }) => {
     ctx.lineWidth = 2;
     ctx.beginPath();
 
-    const amplitude = height / 2;
+    const amplitude = height / 2.5;
     const frequency = 2;
     const phase = time;
-    const steps = 16; // Number of steps in the digital signal
+    const boxWidth = width / steps;
 
     for (let i = 0; i < steps; i++) {
-      const x1 = (i / steps) * width;
-      const x2 = ((i + 1) / steps) * width;
+      const xCenter = (i ) * boxWidth;
       const y = height / 2 + amplitude * Math.sin((i / steps) * frequency * Math.PI * 2 + phase);
       
-      // Draw horizontal line
-      ctx.moveTo(x1, y);
-      ctx.lineTo(x2, y);
+      // Draw horizontal line centered on the signal point
+      ctx.moveTo(xCenter - boxWidth/2, y);
+      ctx.lineTo(xCenter + boxWidth/2, y);
       
       // Draw vertical line (if not the last step)
       if (i < steps - 1) {
         const nextY = height / 2 + amplitude * Math.sin(((i + 1) / steps) * frequency * Math.PI * 2 + phase);
-        ctx.moveTo(x2, y);
-        ctx.lineTo(x2, nextY);
+        ctx.moveTo(xCenter + boxWidth/2, y);
+        ctx.lineTo(xCenter + boxWidth/2, nextY);
       }
     }
 

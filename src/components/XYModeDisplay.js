@@ -29,18 +29,6 @@ const XYModeDisplay = ({ width = 600, height = 600 }) => {
     // Reset for labels
     ctx.textAlign = 'left';
     ctx.font = '12px Arial';
-    
-    // Draw X-axis labels
-    for (let x = 0; x <= width; x += width / 10) {
-      const label = ((x / width) * 2 - 1).toFixed(1);
-      ctx.fillText(label, x - 10, height + 20);
-    }
-    
-    // Draw Y-axis labels
-    for (let y = 0; y <= height; y += height / 10) {
-      const label = ((1 - y / height) * 2 - 1).toFixed(1);
-      ctx.fillText(label, -30, y + 4);
-    }
   };
 
   const drawLissajous = (ctx, width, height) => {

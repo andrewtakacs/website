@@ -13,6 +13,7 @@ function SecretPage() {
   const [isOnTurntable, setIsOnTurntable] = useState(false);
   const [rotationAngle, setRotationAngle] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     // Check if the user has the correct session storage key
@@ -21,6 +22,16 @@ function SecretPage() {
       navigate('/other');
     }
   }, [navigate]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const getRandomRecord = () => {
     const records = [
@@ -347,7 +358,7 @@ function SecretPage() {
 
   return (
     <div 
-      className="secret-page-container"
+      className={`secret-page-container ${isScrolled ? 'scrolled' : ''}`}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
@@ -411,6 +422,32 @@ function SecretPage() {
           )}
         </>
       )}
+      <div style={{ 
+        height: '200vh',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '2rem',
+        padding: '2rem',
+        position: 'relative',
+        zIndex: 0
+      }}>
+        <div style={{ 
+          width: '100%',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+          zIndex: 0
+        }}>
+          <p style={{ fontSize: '1.5rem', color: '#666' }}>
+            Keep scrolling...
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

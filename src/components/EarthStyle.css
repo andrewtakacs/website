@@ -26,7 +26,7 @@
   height: 100%;
   z-index: 8;
   font-family: 'Courier New', monospace;
-  font-size: clamp(0.5rem, 1.2vw, 1rem);
+  font-size: clamp(0.5rem, 2vw, 1rem);
   line-height: 1;
   letter-spacing: 0;
   transition: transform 0.1s linear;

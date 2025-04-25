@@ -4,10 +4,14 @@ import { OscilloscopeDisplay } from '../components/OscilloscopeDisplay';
 import AnalogVsDigitalDisplay from '../components/AnalogVsDigitalDisplay';
 import XYModeDisplay from '../components/XYModeDisplay';
 import HeartDisplay from '../components/HeartDisplay';
+import CircleDisplay from '../components/CircleDisplay';
 
 const Oscilloscope = () => {
   const containerRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 800, height: 400 });
+  const [steps, setSteps] = useState(16);
+
+  const stepOptions = [8, 16, 32, 64, 128];
 
   const updateDimensions = () => {
     if (containerRef.current) {
@@ -59,7 +63,21 @@ const Oscilloscope = () => {
               Analog signals are continuous signals that vary smoothly over time. Digital signals are discrete signals that vary in steps. When you stream music on something like a phone, the signal is digital. Standard music is sampled at 44.1kHz which is 44,100 times per second. When you play a vinyl record, the signal is analog and smooth. Below is an example of an analog signal and a digital signal.
             </p>
             <div className="oscilloscope-display" ref={containerRef}>
-              <AnalogVsDigitalDisplay width={dimensions.width} height={dimensions.height} />
+              <AnalogVsDigitalDisplay width={dimensions.width} height={dimensions.height} steps={steps} />
+            </div>
+            <div className="steps-control-container">
+              <div className="steps-label">Number of Steps:</div>
+              <div className="steps-boxes">
+                {stepOptions.map((option) => (
+                  <div
+                    key={option}
+                    className={`step-box ${steps === option ? 'active' : ''}`}
+                    onClick={() => setSteps(option)}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
             </div>
 
             <h3>Why an Old Oscilloscope?</h3>
@@ -80,8 +98,13 @@ const Oscilloscope = () => {
             <div className="oscilloscope-display" ref={containerRef}>
               <HeartDisplay width={dimensions.width} height={dimensions.height} />
             </div>
-
-
+            <h3>Modify the Signal</h3>
+            <p>
+              Below is an interactive circle display where you can modify various parameters to see how they affect the signal. Try adjusting the frequency, magnitude, scale, and center position to create different patterns. Click the play button in the top right corner!
+            </p>
+            <div className="oscilloscope-display" ref={containerRef}>
+              <CircleDisplay width={dimensions.width} height={dimensions.height} />
+            </div>
           </div>
           <h2>See Also</h2>
           <div className="oscilloscope-text">

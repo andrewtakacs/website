@@ -50,7 +50,7 @@ const OscilloscopeDisplay = ({ width = 800, height = 400 }) => {
     ctx.beginPath();
 
     // Scale to fit within the 4x4 grid
-    const amplitude = height / 2;
+    const amplitude = height / 2.5;
     const frequency = 2;
     const phase = time;
 
