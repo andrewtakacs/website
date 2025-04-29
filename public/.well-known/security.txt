@@ -1,0 +1,13 @@
+# Security Policy for andrewtakacs.com
+Contact: mailto:andrewdtakacs@hotmail.com
+Expires: 2025-12-31T23:59:59.999Z
+Preferred-Languages: en
+Canonical: https://www.andrewtakacs.com/.well-known/security.txt
+Policy: https://www.andrewtakacs.com/security-policy
+Encryption: https://www.andrewtakacs.com/.well-known/pgp-key.txt
+Acknowledgments: https://www.andrewtakacs.com/security-hall-of-fame
+Preferred-Languages: en
+Canonical: https://www.andrewtakacs.com/.well-known/security.txt
+Policy: https://www.andrewtakacs.com/security-policy
+Encryption: https://www.andrewtakacs.com/.well-known/pgp-key.txt
+Acknowledgments: https://www.andrewtakacs.com/security-hall-of-fame 
