@@ -65,6 +65,25 @@ function About() {
       ]
     },
     {
+      title: "Production Operations Engineer Internship",
+      company: "SpaceX",
+      location: "Bastrop, WA",
+      period: "September 2025 - Present",
+      description: [
+        "Currently in progress... Come back later for more details!",
+      ]
+    },
+    {
+      title: "Stress Analysis Engineer Internship",
+      company: "Boeing",
+      location: "Seattle, WA",
+      period: "June 2025 - September 2025",
+      description: [
+        "Performed stress analysis on various components used in the Boeing 777X",
+        "Validated designs using Finite Element Analysis, physical testing, and hand calculations"
+      ]
+    },
+    {
       title: "Project Engineer Internship",
       company: "Titan Electric",
       location: "Bellevue, WA",

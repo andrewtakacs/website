@@ -16,6 +16,18 @@ const timelineData = [
     ]
   },
   {
+    yearStartDate: 2025,
+    monthStartDate: 6,
+    yearEndDate: 2025,
+    monthEndDate: 9,
+    title: 'Stress Analysis Intern',
+    company: 'Boeing',
+    details: [
+      'Performed stress analysis on various components used in the Boeing 777X',
+      'Validated designs using Finite Element Analysis, physical testing, and hand calculations'
+    ]
+  },
+  {
     yearStartDate: 2024,
     monthStartDate: 4,
     yearEndDate: 2024,

@@ -158,6 +158,12 @@
   color: #981E32; /* WSU Crimson */
 }
 
+.experience-card h4[data-company="Boeing"] {
+  color: #0055A4; /* Boeing's brand color */
+}
+.experience-card h4[data-company="SpaceX"] {
+  color: #000000; /* SpaceX's brand color */
+}
 .experience-card h4[data-company="Titan Electric"] {
   color: #f09c00; /* Titan Electric's brand color */
 }
