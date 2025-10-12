@@ -1,0 +1,37 @@
+.certificates-page {
+  min-height: 100vh;
+  padding-top: 80px;
+  background-color: var(--background-color);
+}
+
+.certificates-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.certificate-card {
+  width: 100%;
+  max-width: 800px;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .certificates-container {
+    padding: 0 1rem;
+  }
+} 

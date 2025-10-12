@@ -1,0 +1,167 @@
+.timeline {
+  position: relative;
+  padding: 20px;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+.timeline-columns {
+  display: flex;
+  gap: 20px;
+  min-width: 800px;
+}
+
+.timeline-years,
+.timeline-months,
+.timeline-experiences {
+  position: relative;
+}
+
+.timeline-years {
+  width: 80px;
+}
+
+.timeline-months {
+  width: 120px;
+}
+
+.timeline-experiences {
+  flex: 1;
+  min-width: 400px;
+}
+
+.year-label {
+  height: 480px; /* 12 months * 40px */
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.month-label {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.experience-box {
+  position: absolute;
+  width: calc(100% - 40px);
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.experience-box:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.experience-box.expanded {
+  z-index: 2;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.experience-content {
+  padding: 12px;
+}
+
+.experience-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.experience-content .company {
+  margin: 0 0 4px 0;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.experience-content .date-range {
+  margin: 0 0 8px 0;
+  font-size: 0.8em;
+  color: #888;
+}
+
+.experience-details {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+}
+
+.experience-details ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.experience-details li {
+  margin: 4px 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.timeline-connector {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 20px;
+  height: 2px;
+  background: #ddd;
+}
+
+.timeline-connector::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding: 10px;
+  }
+
+  .timeline-columns {
+    gap: 10px;
+  }
+
+  .timeline-years {
+    width: 60px;
+  }
+
+  .timeline-months {
+    width: 100px;
+  }
+
+  .timeline-experiences {
+    min-width: 300px;
+  }
+
+  .year-label,
+  .month-label {
+    font-size: 0.8em;
+  }
+
+  .experience-content h3 {
+    font-size: 1em;
+  }
+
+  .experience-content .company,
+  .experience-content .date-range,
+  .experience-details li {
+    font-size: 0.8em;
+  }
+} 
