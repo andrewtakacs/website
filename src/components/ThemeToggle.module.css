@@ -1,0 +1,45 @@
+/* Theme Toggle - Super Simple */
+.themeToggle {
+  background: none;
+  border: none;
+  padding: var(--space-2);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.themeToggle:hover {
+  transform: scale(1.1);
+}
+
+.themeToggle:focus {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+}
+
+.shape {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: all var(--transition-fast);
+}
+
+.shapeLight {
+  background-color: #000000;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .themeToggle:hover {
+    transform: none;
+  }
+  
+  .shape {
+    transition: none;
+  }
+}

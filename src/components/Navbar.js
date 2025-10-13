@@ -1,73 +1,83 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation, NavLink } from 'react-router-dom';
-import './Navbar.css';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  // Close menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isOpen && !event.target.closest('.navbar-container')) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isOpen]);
-
-  const navLinks = [
+  const navItems = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/projects', label: 'Projects' },
-    { path: '/other', label: 'Other' },
     { path: '/contact', label: 'Contact' },
+    { path: 'theme', label: 'Theme', isThemeToggle: true }
   ];
 
-  return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${location.pathname === '/secret' ? 'secret-page' : ''}`}>
-      <div className="navbar-container">
-        <button 
-          className={`mobile-menu-button ${isOpen ? 'open' : ''}`} 
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+  const isActive = (path) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
 
-        <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              className={({ isActive }) => isActive ? 'active' : ''}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.label}
-            </NavLink>
-          ))}
+  return (
+    <nav className={styles.navbar}>
+      <div className={styles.navbarContent}>
+        {/* Logo */}
+        <Link to="/" className={styles.logo}>
+          @
+        </Link>
+
+        {/* Desktop Navigation */}
+        <div className={styles.navDesktop}>
+          <button
+            className={styles.desktopToggle}
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            <span className={`${styles.hamburger} ${isOpen ? styles.hamburgerOpen : ''}`}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
         </div>
+      </div>
+
+      {/* Dropdown Navigation */}
+      <div className={`${styles.navMobile} ${isOpen ? styles.navMobileOpen : ''}`}>
+        <ul className={styles.navListMobile}>
+          {navItems.map((item) => (
+            <li key={item.path} className={styles.navItemMobile}>
+              {item.isThemeToggle ? (
+                <button
+                  className={`${styles.navLinkMobile} ${styles.themeToggleButton}`}
+                  onClick={() => {
+                    // Toggle theme logic here
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                  }}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link
+                  to={item.path}
+                  className={`${styles.navLinkMobile} ${isActive(item.path) ? styles.navLinkMobileActive : ''}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   );
 };
 
-export default Navbar; 
+export default Navbar;

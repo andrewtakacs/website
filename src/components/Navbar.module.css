@@ -1,0 +1,200 @@
+/* Navbar - Minimal Software Engineer Portfolio */
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  z-index: var(--z-sticky);
+}
+
+.navbarContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) calc(var(--space-6) + 120px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 100;
+  background-color: var(--color-background);
+}
+
+/* Logo */
+.logo {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.logo:hover {
+  color: var(--color-text-secondary);
+}
+
+/* Desktop Navigation */
+.navDesktop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.desktopToggle {
+  background: none;
+  border: none;
+  padding: var(--space-2);
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Mobile Toggle - Hidden since we're using desktop dropdown for all */
+.mobileToggle {
+  display: none;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 1.5rem;
+  height: 1.25rem;
+  position: relative;
+  justify-content: center;
+}
+
+.hamburger span {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-text-primary);
+  transition: all 0.6s ease-in-out;
+  transform-origin: center;
+  position: absolute;
+}
+
+.hamburger span:nth-child(1) {
+  top: 4px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger span:nth-child(3) {
+  bottom: 4px;
+}
+
+.hamburgerOpen span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.hamburgerOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerOpen span:nth-child(3) {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* Mobile Navigation - Now used for both desktop and mobile */
+.navMobile {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  transform: translateY(-100%);
+  transition: transform 0.6s ease-in-out;
+  min-width: 200px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.navMobileOpen {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.navListMobile {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItemMobile {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0;
+  margin: 0;
+}
+
+.navItemMobile:last-child {
+  border-bottom: none;
+}
+
+.navLinkMobile {
+  display: block;
+  padding: var(--space-4) var(--space-6);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-fast);
+}
+
+.navLinkMobile:hover {
+  color: var(--color-text-primary);
+  background-color: var(--color-secondary-50);
+}
+
+.navLinkMobileActive {
+  color: var(--color-text-primary);
+  background-color: var(--color-secondary-50);
+  border-left: 2px solid var(--color-text-primary);
+}
+
+/* Theme Toggle Button - Make it look exactly like nav links */
+.themeToggleButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  padding: var(--space-4) var(--space-6);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.themeToggleButton:hover {
+  color: var(--color-text-primary);
+}
+
+/* Responsive Design - All screen sizes use dropdown */
+@media (max-width: 768px) {
+  .navbarContent {
+    padding: var(--space-4) var(--space-6);
+    flex-direction: row-reverse; /* Swaps logo and dropdown positions */
+  }
+  
+  .navMobile {
+    left: 0;
+    right: 0;
+    min-width: auto;
+  }
+}
+
+/* Focus States */
+.navLink:focus,
+.navLinkMobile:focus,
+.desktopToggle:focus,
+.mobileToggle:focus {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+}

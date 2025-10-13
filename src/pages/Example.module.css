@@ -1,0 +1,59 @@
+/* Example Page Styles - Component-scoped styles only */
+.header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.title {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+  background: var(--color-text-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+}
+
+.colorSwatch {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.spacingBar {
+  height: 1rem;
+  background-color: var(--color-text-primary);
+  border-radius: var(--radius-sm);
+  min-width: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-base);
+  }
+}

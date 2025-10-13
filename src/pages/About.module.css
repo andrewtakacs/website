@@ -1,0 +1,207 @@
+/* About Page - Minimal Software Engineer Portfolio */
+.about {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  padding: var(--space-24) 0;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.title {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-8);
+  letter-spacing: -0.02em;
+}
+
+.text p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+.text p:last-child {
+  margin-bottom: 0;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholderImage {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--color-secondary-200), var(--color-secondary-100));
+  border-radius: var(--radius-md);
+}
+
+/* Process Section */
+.process {
+  padding: var(--space-24) 0;
+  background-color: var(--color-background);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-12);
+  letter-spacing: -0.01em;
+}
+
+.processItem {
+  text-align: center;
+}
+
+.processNumber {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.1em;
+}
+
+.processTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.processDescription {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Skills Section */
+.skills {
+  padding: var(--space-24) 0;
+  background-color: var(--color-surface);
+}
+
+.skillsContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.skillsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.skillItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.skillName {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.skillBar {
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-secondary-200);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skillProgress {
+  height: 100%;
+  background: var(--color-text-primary);
+  border-radius: 2px;
+  transition: width var(--transition-slow);
+}
+
+.skillsInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.skillsTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.skillsDescription {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero,
+  .process,
+  .skills {
+    padding: var(--space-20) 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero,
+  .process,
+  .skills {
+    padding: var(--space-16) 0;
+  }
+  
+  .title {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .placeholderImage {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero,
+  .process,
+  .skills {
+    padding: var(--space-12) 0;
+  }
+  
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .text p {
+    font-size: var(--font-size-base);
+  }
+  
+  .placeholderImage {
+    max-width: 250px;
+  }
+}

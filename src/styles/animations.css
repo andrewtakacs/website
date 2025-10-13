@@ -1,0 +1,374 @@
+/* Animations - Motion & micro-interaction library */
+
+/* Named Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes marquee-slow {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Transition Helpers */
+.transition-fast {
+  transition: all var(--transition-fast);
+}
+
+.transition-base {
+  transition: all var(--transition-base);
+}
+
+.transition-slow {
+  transition: all var(--transition-slow);
+}
+
+/* Animation Classes */
+.animate-fadeIn {
+  animation: fadeIn var(--transition-base) cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp var(--transition-base) cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.animate-scaleIn {
+  animation: scaleIn var(--transition-fast) cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    var(--color-secondary-200) 0px,
+    var(--color-secondary-100) 40px,
+    var(--color-secondary-200) 80px
+  );
+  background-size: 200px 100%;
+}
+
+.animate-marquee-slow {
+  animation: marquee-slow 20s linear infinite;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform var(--transition-fast);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.hover-scale {
+  transition: transform var(--transition-fast);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-fade {
+  transition: opacity var(--transition-fast);
+}
+
+.hover-fade:hover {
+  opacity: 0.8;
+}
+
+/* Focus Effects */
+.focus-ring {
+  transition: box-shadow var(--transition-fast);
+}
+
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+/* Loading States */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+/* Skeleton Loading */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-secondary-200) 0px,
+    var(--color-secondary-100) 40px,
+    var(--color-secondary-200) 80px
+  );
+  background-size: 200px 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+.skeleton--text {
+  height: 1em;
+  margin-bottom: var(--space-2);
+}
+
+.skeleton--title {
+  height: 1.5em;
+  width: 60%;
+  margin-bottom: var(--space-4);
+}
+
+.skeleton--avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.skeleton--button {
+  height: 2.5rem;
+  width: 6rem;
+}
+
+/* Stagger Animations */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+/* Motion OK Helper - Only show animations when motion is preferred */
+@media (prefers-reduced-motion: no-preference) {
+  .motion-ok .animate-fadeIn {
+    animation: fadeIn var(--transition-base) cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  
+  .motion-ok .animate-fadeInUp {
+    animation: fadeInUp var(--transition-base) cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  
+  .motion-ok .animate-scaleIn {
+    animation: scaleIn var(--transition-fast) cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  
+  .motion-ok .animate-shimmer {
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+  
+  .motion-ok .animate-marquee-slow {
+    animation: marquee-slow 20s linear infinite;
+  }
+  
+  .motion-ok .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+  
+  .motion-ok .hover-scale:hover {
+    transform: scale(1.02);
+  }
+  
+  .motion-ok .loading::after {
+    animation: shimmer 1.5s infinite;
+  }
+  
+  .motion-ok .skeleton {
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+}
+
+/* Reduced Motion - Disable non-essential animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-fadeIn,
+  .animate-fadeInUp,
+  .animate-scaleIn,
+  .animate-shimmer,
+  .animate-marquee-slow {
+    animation: none !important;
+  }
+  
+  .hover-lift:hover,
+  .hover-scale:hover {
+    transform: none !important;
+  }
+  
+  .loading::after {
+    animation: none !important;
+  }
+  
+  .skeleton {
+    animation: none !important;
+  }
+}
+
+/* Utility Classes for Common Patterns */
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scale-on-hover {
+  transition: transform var(--transition-fast);
+}
+
+.scale-on-hover:hover {
+  transform: scale(1.05);
+}
+
+.rotate-on-hover {
+  transition: transform var(--transition-fast);
+}
+
+.rotate-on-hover:hover {
+  transform: rotate(5deg);
+}
+
+/* Page Transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+/* Modal Animations */
+.modal-enter {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.modal-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Toast Animations */
+.toast-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.toast-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.toast-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}

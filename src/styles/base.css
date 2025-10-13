@@ -1,0 +1,757 @@
+/* Base Styles - Resets, global rules, typography, body defaults */
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Remove default link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Remove default form styles */
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Make images responsive */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove default table styles */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove default fieldset styles */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove default legend styles */
+legend {
+  padding: 0;
+}
+
+/* Remove default textarea styles */
+textarea {
+  resize: vertical;
+}
+
+/* Remove default summary styles */
+summary {
+  cursor: pointer;
+}
+
+/* Remove default details styles */
+details {
+  display: block;
+}
+
+/* Remove default mark styles */
+mark {
+  background: none;
+  color: inherit;
+}
+
+/* Remove default small styles */
+small {
+  font-size: inherit;
+}
+
+/* Remove default sub and sup styles */
+sub,
+sup {
+  font-size: inherit;
+  line-height: inherit;
+  position: static;
+}
+
+/* Remove default meter styles */
+meter {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Remove default progress styles */
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Remove default select styles */
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Remove default input styles */
+input[type="search"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Remove default file input styles */
+input[type="file"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Remove default range input styles */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Remove default color input styles */
+input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Remove default date input styles */
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Remove default number input styles */
+input[type="number"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Remove default checkbox and radio styles */
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Remove default datalist styles */
+datalist {
+  display: none;
+}
+
+/* Remove default output styles */
+output {
+  display: inline;
+}
+
+/* Remove default template styles */
+template {
+  display: none;
+}
+
+/* Remove default hidden styles */
+[hidden] {
+  display: none !important;
+}
+
+/* Remove default script styles */
+script,
+style {
+  display: none;
+}
+
+/* Remove default noscript styles */
+noscript {
+  display: block;
+}
+
+/* Remove default iframe styles */
+iframe {
+  border: none;
+}
+
+/* Remove default embed styles */
+embed,
+object {
+  display: block;
+}
+
+/* Remove default param styles */
+param {
+  display: none;
+}
+
+/* Remove default source styles */
+source {
+  display: none;
+}
+
+/* Remove default track styles */
+track {
+  display: none;
+}
+
+/* Remove default map styles */
+map {
+  display: block;
+}
+
+/* Remove default area styles */
+area {
+  display: none;
+}
+
+/* Remove default base styles */
+base {
+  display: none;
+}
+
+/* Remove default link styles */
+link {
+  display: none;
+}
+
+/* Remove default meta styles */
+meta {
+  display: none;
+}
+
+/* Remove default title styles */
+title {
+  display: none;
+}
+
+/* Remove default head styles */
+head {
+  display: none;
+}
+
+/* Remove default html styles */
+html {
+  display: block;
+}
+
+/* Remove default body styles */
+body {
+  display: block;
+}
+
+/* Root element */
+html {
+  font-size: 16px;
+  line-height: var(--line-height-normal);
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Body styles */
+body {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+h1 {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-extrabold);
+}
+
+h2 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+}
+
+h3 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h4 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h5 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+}
+
+h6 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+p {
+  margin-bottom: var(--space-4);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Links */
+a {
+  color: var(--color-primary-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-700);
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Code */
+code,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+}
+
+code {
+  background-color: var(--color-secondary-100);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+}
+
+pre {
+  background-color: var(--color-secondary-100);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: var(--space-4);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Lists */
+ul,
+ol {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+}
+
+li {
+  margin-bottom: var(--space-2);
+  color: var(--color-text-secondary);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--space-4);
+}
+
+th,
+td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  background-color: var(--color-secondary-50);
+}
+
+/* Forms */
+label {
+  display: block;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background-color: var(--color-secondary-100);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--space-8) 0;
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 4px solid var(--color-primary-500);
+  padding-left: var(--space-4);
+  margin: var(--space-6) 0;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+/* Address */
+address {
+  font-style: normal;
+  color: var(--color-text-secondary);
+}
+
+/* Definition lists */
+dl {
+  margin-bottom: var(--space-4);
+}
+
+dt {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+dd {
+  margin-bottom: var(--space-4);
+  color: var(--color-text-secondary);
+  padding-left: var(--space-4);
+}
+
+/* Details and summary */
+details {
+  margin-bottom: var(--space-4);
+}
+
+summary {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  padding: var(--space-2) 0;
+}
+
+details[open] summary {
+  margin-bottom: var(--space-2);
+}
+
+/* Mark */
+mark {
+  background-color: var(--color-warning-200);
+  color: var(--color-warning-900);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* Small */
+small {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Sub and sup */
+sub,
+sup {
+  font-size: var(--font-size-xs);
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Abbreviation */
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+/* Keyboard input */
+kbd {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-secondary-100);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 0 var(--color-border);
+}
+
+/* Sample output */
+samp {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-secondary-100);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* Variable */
+var {
+  font-family: var(--font-family-mono);
+  font-style: italic;
+  color: var(--color-text-primary);
+}
+
+/* Time */
+time {
+  color: var(--color-text-muted);
+}
+
+/* Data */
+data {
+  color: var(--color-text-primary);
+}
+
+/* Output */
+output {
+  font-family: var(--font-family-mono);
+  color: var(--color-text-primary);
+}
+
+/* Progress */
+progress {
+  width: 100%;
+  height: var(--space-2);
+  background-color: var(--color-secondary-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+  background-color: var(--color-secondary-200);
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--color-primary-500);
+}
+
+progress::-moz-progress-bar {
+  background-color: var(--color-primary-500);
+}
+
+/* Meter */
+meter {
+  width: 100%;
+  height: var(--space-2);
+  background-color: var(--color-secondary-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+meter::-webkit-meter-bar {
+  background-color: var(--color-secondary-200);
+}
+
+meter::-webkit-meter-optimum-value {
+  background-color: var(--color-accent-500);
+}
+
+meter::-webkit-meter-suboptimum-value {
+  background-color: var(--color-warning-500);
+}
+
+meter::-webkit-meter-even-less-good-value {
+  background-color: var(--color-error-500);
+}
+
+meter::-moz-meter-bar {
+  background-color: var(--color-accent-500);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-text-secondary);
+  color: var(--color-background);
+}
+
+::-moz-selection {
+  background-color: var(--color-text-secondary);
+  color: var(--color-background);
+}
+
+/* Hide scrollbars */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

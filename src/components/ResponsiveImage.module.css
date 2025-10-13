@@ -1,0 +1,92 @@
+/* Responsive Image Component */
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-secondary-100);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.imageContainer:hover .image {
+  transform: scale(1.02);
+}
+
+/* Loading state */
+.imageContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-secondary-200) 0px,
+    var(--color-secondary-100) 40px,
+    var(--color-secondary-200) 80px
+  );
+  background-size: 200px 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  z-index: 1;
+}
+
+.imageContainer.loaded::before {
+  display: none;
+}
+
+/* Blur placeholder */
+.imageContainer[data-placeholder="blur"] {
+  background-image: var(--blur-data-url);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Aspect ratio containers */
+.imageContainer[style*="aspect-ratio"] {
+  aspect-ratio: var(--aspect-ratio);
+}
+
+/* Responsive behavior */
+@media (max-width: 640px) {
+  .imageContainer {
+    aspect-ratio: 16/9;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .imageContainer {
+    aspect-ratio: 4/3;
+  }
+}
+
+@media (min-width: 1025px) {
+  .imageContainer {
+    aspect-ratio: 16/10;
+  }
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    transition: none;
+  }
+  
+  .imageContainer::before {
+    animation: none;
+  }
+}

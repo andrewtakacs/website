@@ -5,21 +5,18 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
-import AIProjects from './pages/AIProjects';
-import Other from './pages/Other';
-import SecretPage from './pages/SecretPage';
-import PortfolioWebsite from './pages/PortfolioWebsite';
-import EMotorProject from './pages/EMotorProject';
-import AmazonFEA from './pages/AmazonFEA';
-import Oscilloscope from './pages/Oscilloscope';
-import SELProject from './pages/SELProject';
-import Research from './pages/Research';
-import Certificates from './pages/Certificates';
-import './App.css';
+import Example from './pages/Example';
+import NotFound from './pages/NotFound';
+import ServerError from './pages/ServerError';
 
 function App() {
   return (
-    <Router>
+    <Router
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true
+      }}
+    >
       <div className="App">
         <Navbar />
         <Routes>
@@ -27,16 +24,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/ai-projects" element={<AIProjects />} />
-          <Route path="/other" element={<Other />} />
-          <Route path="/secret" element={<SecretPage />} />
-          <Route path="/projects/portfolio-website" element={<PortfolioWebsite />} />
-          <Route path="/emotor-project" element={<EMotorProject />} />
-          <Route path="/amazon-fea" element={<AmazonFEA />} />
-          <Route path="/oscilloscope" element={<Oscilloscope />} />
-          <Route path="/sel-project" element={<SELProject />} />
-          <Route path="/research" element={<Research />} />
-          <Route path="/certificates" element={<Certificates />} />
+          <Route path="/example" element={<Example />} />
+          <Route path="/500" element={<ServerError />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
