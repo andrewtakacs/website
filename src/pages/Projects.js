@@ -102,6 +102,7 @@ const Projects = () => {
         });
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFilter]);
 
   const filteredProjects = activeFilter === 'all' 

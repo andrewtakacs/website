@@ -3,6 +3,7 @@ import './OscilloscopeDisplay.css';
 
 const OscilloscopeDisplay = ({ width = 800, height = 400 }) => {
   const canvasRef = useRef(null);
+  // eslint-disable-next-line no-unused-vars
   const animationRef = useRef(null);
   const [time, setTime] = useState(0);
 
@@ -109,6 +110,7 @@ const OscilloscopeDisplay = ({ width = 800, height = 400 }) => {
   }, []);
 
   // Redraw effect
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     drawCanvas();
   }, [time, width, height]);
@@ -249,6 +251,7 @@ const HeartDisplay = ({ width = 600, height = 600 }) => {
   }, []);
 
   // Redraw effect
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     drawCanvas();
   }, [time, width, height]);

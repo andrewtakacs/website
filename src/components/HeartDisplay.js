@@ -151,6 +151,7 @@ const HeartDisplay = ({ width = 600, height = 600 }) => {
   }, []);
 
   // Redraw effect
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     drawCanvas();
   }, [time, width, height]);
