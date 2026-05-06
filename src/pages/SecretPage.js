@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SecretPage.css';
+import { SecurityHeaders } from '../utils/security';
 
 function SecretPage() {
   const navigate = useNavigate();
@@ -357,7 +358,9 @@ function SecretPage() {
   }, [isOnTurntable, circle]);
 
   return (
-    <div 
+    <>
+      <SecurityHeaders title="Secret | Andrew Takacs" description="You found it." />
+      <div
       className={`secret-page-container ${isScrolled ? 'scrolled' : ''}`}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
@@ -449,6 +452,7 @@ function SecretPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

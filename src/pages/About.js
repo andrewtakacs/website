@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './About.css';
+import { SecurityHeaders } from '../utils/security';
 
 function About() {
   const skills = {
@@ -129,6 +130,7 @@ function About() {
 
   return (
     <div className="about-page">
+      <SecurityHeaders title="About | Andrew Takacs" description="Aerospace engineering graduate student at UW researching rotational detonation engines, with a BS in Mechanical Engineering from WSU and experience at Boeing, SpaceX, and more." />
       <section className="about-hero">
         <h1 className="section-title">About Me</h1>
       </section>

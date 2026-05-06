@@ -1,9 +1,11 @@
 import React from 'react';
 import './AmazonFEA.css';
+import { SecurityHeaders } from '../utils/security';
 
 const AmazonFEA = () => {
   return (
     <div className="amazon-fea-page">
+      <SecurityHeaders title="Amazon Drone Bracket FEA | Andrew Takacs" description="Finite element analysis and topology optimization of an Amazon drone bracket to improve structural integrity while minimizing weight." />
       <section className="amazon-fea-hero">
         <h1 className="section-title">Amazon Drone Bracket FEA</h1>
       </section>

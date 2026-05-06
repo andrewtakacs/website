@@ -1,10 +1,12 @@
 import React from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
+import { SecurityHeaders } from '../utils/security';
 
 const Home = () => {
   return (
     <div className="home">
+      <SecurityHeaders title="Andrew Takacs" description="Aerospace engineer and developer specializing in propulsion, AI/ML, and engineering design. Portfolio of projects, research, and experience." />
       <section className="hero-section">
         <img 
           className="hero-video" 

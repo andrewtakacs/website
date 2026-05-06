@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Projects.css';
+import { SecurityHeaders } from '../utils/security';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -111,6 +112,7 @@ const Projects = () => {
 
   return (
     <div className="projects-page">
+      <SecurityHeaders title="Projects | Andrew Takacs" description="Engineering design and fabrication projects including FEA analysis, FCEV motor fixtures, manufacturing improvements, and more." />
       <section className="projects-hero">
         <h1 className="section-title">Some of My Projects</h1>
       </section>

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import './Oscilloscope.css';
+import { SecurityHeaders } from '../utils/security';
 import { OscilloscopeDisplay } from '../components/OscilloscopeDisplay';
 import AnalogVsDigitalDisplay from '../components/AnalogVsDigitalDisplay';
 import XYModeDisplay from '../components/XYModeDisplay';
@@ -30,6 +31,7 @@ const Oscilloscope = () => {
 
   return (
     <div className="oscilloscope-page">
+      <SecurityHeaders title="Oscilloscope Project | Andrew Takacs" description="An interactive oscilloscope project demonstrating analog signal visualization, Lissajous figures, and XY mode displays." />
       <section className="oscilloscope-hero">
         <h1 className="section-title">Oscilloscope Project</h1>
       </section>

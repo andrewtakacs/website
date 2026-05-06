@@ -1,9 +1,11 @@
 import React from 'react';
 import './EMotorProject.css';
+import { SecurityHeaders } from '../utils/security';
 
 const EMotorProject = () => {
   return (
     <div className="emotor-page">
+      <SecurityHeaders title="eMotor Transmission Fixture | Andrew Takacs" description="Capstone project designing and building a fuel cell electric vehicle eMotor transmission fixture at Washington State University." />
       <section className="emotor-hero">
         <h1 className="section-title">Fuel Cell Electric Vehicle eMotor Transmission Fixture</h1>
       </section>

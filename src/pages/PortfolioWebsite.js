@@ -1,10 +1,12 @@
 import React from 'react';
 import './PortfolioWebsite.css';
 import EarthCode from '../components/EarthCode';
+import { SecurityHeaders } from '../utils/security';
 
 const PortfolioWebsite = () => {
   return (
     <div className="portfolio-website-page">
+      <SecurityHeaders title="Portfolio Website | Andrew Takacs" description="This portfolio website was built from scratch with React and JavaScript, hosted on GitHub Pages with a custom domain." />
       <section className="portfolio-website-hero">
         <h1 className="section-title">Portfolio Website Project</h1>
       </section>

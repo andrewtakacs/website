@@ -1,9 +1,11 @@
 import React from 'react';
 import './Research.css';
+import { SecurityHeaders } from '../utils/security';
 
 const Research = () => {
   return (
     <div className="research-page">
+      <SecurityHeaders title="Research | Andrew Takacs" description="Graduate research at the University of Washington focused on rotational detonation engines and advanced propulsion systems." />
       <div className="research-hero">
         <div className="hero-content">
           <h1>Research</h1>

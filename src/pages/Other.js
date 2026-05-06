@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Other.css';
+import { SecurityHeaders } from '../utils/security';
 
 function Other() {
   const [value, setValue] = useState('');
@@ -19,6 +20,7 @@ function Other() {
 
   return (
     <div className="other-page">
+      <SecurityHeaders title="Other | Andrew Takacs" description="Additional interests, activities, and personal details about Andrew Takacs." />
       <section className="other-hero">
         <h1 className="section-title">Other</h1>
       </section>

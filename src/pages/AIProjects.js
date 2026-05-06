@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './AIProjects.css';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
+import { SecurityHeaders } from '../utils/security';
 
 const AIProjects = () => {
   const [expandedSections, setExpandedSections] = useState({
@@ -26,6 +27,7 @@ const AIProjects = () => {
 
   return (
     <div className="ai-projects-page">
+      <SecurityHeaders title="AI & ML Projects | Andrew Takacs" description="Machine learning and AI projects covering Fourier transforms, neural networks, humanoid robot locomotion, and image classification — from fundamentals to advanced applications." />
       <section className="ai-projects-hero">
         <h1 className="section-title">AI & Machine Learning Projects</h1>
       </section>
