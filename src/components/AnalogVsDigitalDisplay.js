@@ -114,6 +114,7 @@ const AnalogVsDigitalDisplay = ({ width = 800, height = 400, steps = 16 }) => {
   }, []);
 
   // Redraw effect
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     drawCanvas();
   }, [time, width, height]);

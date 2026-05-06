@@ -444,6 +444,7 @@ const CircleDisplay = ({ width = 600, height = 600 }) => {
   }, [isPhaseRotating]);
 
   // Redraw effect
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     drawCanvas();
   }, [time, width, height, frequencyX, frequencyY, magnitudeX, magnitudeY, rotation, centerX, centerY]);
@@ -480,6 +481,7 @@ const CircleDisplay = ({ width = 600, height = 600 }) => {
     return () => {
       if (demoInterval) clearInterval(demoInterval);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDemoPlaying]);
 
   // Song effect
@@ -513,6 +515,7 @@ const CircleDisplay = ({ width = 600, height = 600 }) => {
     return () => {
       if (songInterval) clearInterval(songInterval);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSongPlaying]);
 
   // Magnitude transition demo
