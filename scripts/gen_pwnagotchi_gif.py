@@ -163,8 +163,8 @@ def make_frame(fi):
     t = fi / FRAMES
     yaw = math.sin(2 * math.pi * t)
     squash = 1.0 - 0.10 * abs(yaw)
-    side_x = 26 * yaw
-    side_y = 17 - 10 * abs(yaw)
+    side_x = 14 * yaw
+    side_y = 9 - 5 * abs(yaw)
 
     img = Image.new('RGB', (W_PX * SCALE, H_PX * SCALE), MATTE)
     draw = ImageDraw.Draw(img)
@@ -174,13 +174,13 @@ def make_frame(fi):
     body_h = 149
     r = int(18 * SCALE)
 
-    rr(draw, scaled_box(cx + side_x, cy + side_y + 22, body_w + 32, body_h + 18),
+    rr(draw, scaled_box(cx + side_x, cy + side_y + 12, body_w + 18, body_h + 10),
        r, BATTERY, outline=shade(BATTERY, 0.45), width=2 * SCALE)
-    rr(draw, scaled_box(cx + side_x * 0.55, cy + side_y * 0.55 + 8, body_w + 24, body_h + 8),
+    rr(draw, scaled_box(cx + side_x * 0.55, cy + side_y * 0.55 + 5, body_w + 14, body_h + 5),
        r, PCB, outline=shade(PCB, 0.55), width=2 * SCALE)
 
     side_color = shade(CASE_SIDE, 0.84 + 0.10 * max(0, yaw))
-    rr(draw, scaled_box(cx + side_x * 0.35, cy + side_y * 0.35, body_w + 12, body_h + 12),
+    rr(draw, scaled_box(cx + side_x * 0.30, cy + side_y * 0.30, body_w + 7, body_h + 7),
        r, side_color, outline=shade(side_color, 0.55), width=2 * SCALE)
 
     rr(draw, scaled_box(cx, cy, body_w, body_h),

@@ -1,2 +1,2 @@
-# SPA fallback — all routes serve index.html
+# SPA fallback - proxy all unmatched routes to index.html
 /* /index.html 200

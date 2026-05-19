@@ -1,5 +1,4 @@
 import Footer from '../components/Footer';
-import './AmazonFEA.css';
 
 export default function AmazonFEA() {
   return (

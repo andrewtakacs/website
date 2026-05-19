@@ -1,5 +1,4 @@
 import Footer from '../components/Footer';
-import './SELProject.css';
 
 export default function SELProject() {
   return (

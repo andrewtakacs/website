@@ -1,5 +1,4 @@
 import Footer from '../components/Footer';
-import './EMotorProject.css';
 
 export default function EMotorProject() {
   return (
