@@ -1,6 +1,6 @@
 .earth-container {
-  color: #000000;
-  background-color: rgb(255, 255, 255);
+  color: var(--ink);
+  background-color: var(--bg);
   z-index: 8;
   position: relative;
   left: 50%;

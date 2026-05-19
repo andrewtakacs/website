@@ -1,91 +1,53 @@
-:root {
-  --primary-color: #2d3436;
-  --secondary-color: #232323;
-  --accent-color: #00b894;
-  --text-color: #2d3436;
-  --background-color: #ffffff;
-  --section-padding: 5rem 2rem;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--background-color);
-}
-
 .App {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background-color: var(--bg);
+  color: var(--ink);
 }
 
-.main-content {
-  flex: 1;
-  padding-top: 80px; /* Space for fixed navbar */
-}
-
-.section {
-  padding: var(--section-padding);
-  max-width: 1200px;
+.inner-page {
+  padding-top: 4rem;
+  min-height: 100vh;
+  max-width: 860px;
   margin: 0 auto;
+  padding-left: var(--hud-pad);
+  padding-right: var(--hud-pad);
+  padding-bottom: 4rem;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: var(--primary-color);
-  text-align: center;
+.page-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
 }
 
-.section-subtitle {
-  font-size: 1.2rem;
-  color: var(--secondary-color);
-  margin-bottom: 1rem;
+.rule {
+  display: block;
+  height: 1px;
+  background: var(--ink-faint);
+  border: none;
+  margin: var(--unit) 0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .section {
-    padding: 3rem 1rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
+.mono {
+  font-family: var(--font-mono);
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.sans {
+  font-family: var(--font-sans);
 }
 
-.fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+.dim {
+  color: var(--ink-dim);
 }
 
-/* Update navbar styles for dark mode */
-.navbar.scrolled {
-  background-color: var(--surface-color);
-  box-shadow: 0 2px 10px var(--shadow-color);
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
-/* Update mobile menu background for dark mode */
-@media (max-width: 768px) {
-  .navbar-links {
-    background-color: var(--surface-color);
-  }
-} 
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

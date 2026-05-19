@@ -1,190 +1,124 @@
 .oscilloscope-page {
-  padding-top: 80px;
-  min-height: 100%;
-  background-color: var(--background-color);
+  padding-top: 1rem;
 }
 
 .oscilloscope-hero {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  color: var(--text-color);
-  margin-bottom: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+}
+
+.oscilloscope-hero .section-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 400;
 }
 
 .oscilloscope-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0;
 }
 
 .oscilloscope-section {
-  margin-bottom: 4rem;
-}
-
-.oscilloscope-display {
-  background: #000;
-  border: 2px solid #333;
-  border-radius: 8px;
-  padding: 0.1 rem;
-  width: 100%;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.oscilloscope-canvas {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-.oscilloscope-text {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--text-color);
-}
-
-.oscilloscope-text p {
-  margin-bottom: 1.5rem;
-}
-
-.oscilloscope-text ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.oscilloscope-text li {
-  margin-bottom: 0.5rem;
-  padding-left: 1.5rem;
-  position: relative;
-}
-
-.oscilloscope-text li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: var(--secondary-color);
+  margin-bottom: 2rem;
 }
 
 .oscilloscope-section h2 {
-  font-size: 2rem;
-  color: var(--primary-color);
-  margin-bottom: 1.5rem;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-.oscilloscope-section h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background-color: var(--secondary-color);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin: 1.5rem 0 0.8rem;
 }
 
 .oscilloscope-section h3 {
-  font-size: 1.5rem;
-  color: var(--primary-color);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--ink-dim);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin: 1rem 0 0.4rem;
+}
+
+.oscilloscope-text {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--ink-dim);
+}
+
+.oscilloscope-text p {
+  margin-bottom: 0.8rem;
+}
+
+.oscilloscope-text a {
+  color: var(--ink-dim);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+
+.oscilloscope-text a:hover {
+  color: var(--accent);
+}
+
+.oscilloscope-display {
+  background: #0a0a08;
+  padding: 0;
+  width: 100%;
+  max-width: 800px;
+  margin: 1rem auto;
 }
 
 .steps-control-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0;
+  margin: 0.8rem auto;
   width: 100%;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 0.5rem;
 }
 
 .steps-label {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  color: #333;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim);
 }
 
 .steps-boxes {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  width: 100%;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 .step-box {
-  width: 60px;
-  height: 40px;
+  width: 3rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0;
-  border: 2px solid #ccc;
-  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--ink-faint);
   cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--ink-dim);
+  transition: all 0.15s;
   user-select: none;
 }
 
 .step-box:hover {
-  background-color: #e0e0e0;
-  transform: translateY(-2px);
+  border-color: var(--ink-dim);
+  color: var(--ink);
 }
 
 .step-box.active {
-  background-color: #4CAF50;
-  color: white;
-  border-color: #4CAF50;
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
 }
-
-@media (max-width: 600px) {
-  .step-box {
-    width: 50px;
-    height: 35px;
-    font-size: 0.9rem;
-  }
-  
-  .steps-label {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .step-box {
-    width: 40px;
-    height: 30px;
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .oscilloscope-hero {
-    padding: 3rem 1rem;
-  }
-
-  .oscilloscope-content {
-    padding: 0 1rem;
-  }
-
-  .oscilloscope-section h2 {
-    font-size: 1.8rem;
-  }
-
-  .oscilloscope-section h3 {
-    font-size: 1.3rem;
-  }
-
-  .oscilloscope-text {
-    font-size: 1rem;
-  }
-
-  .oscilloscope-controls {
-    flex-direction: column;
-    align-items: stretch;
-  }
-} 

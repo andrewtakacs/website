@@ -1,28 +1,26 @@
-import React from 'react';
+import Footer from '../components/Footer';
 import './SELProject.css';
-import { SecurityHeaders } from '../utils/security';
 
-const SELProject = () => {
+export default function SELProject() {
   return (
-    <div className="sel-page">
-      <SecurityHeaders title="SEL Manufacturing Improvement | Andrew Takacs" description="Manufacturing process improvement project completed for Schweitzer Engineering Laboratories." />
-      <section className="sel-hero">
-        <h1 className="section-title">SEL Manufacturing Improvement Project</h1>
-      </section>
-
-      <div className="sel-content">
-        <section className="sel-section">
-          <h2>Overview</h2>
-          <div className="sel-text">
-            <h3>Project Background</h3>
-            <p>
-              This page is under construction. Please check back soon!
-            </p>
-          </div>
-        </section>
+    <div className="inner-page detail-page">
+      <div className="detail-header">
+        <span className="page-label">hardware / 003</span>
+        <h1 className="detail-title">SEL Manufacturing Process Engineering</h1>
+        <div className="detail-meta">
+          <span className="dim">2023</span>
+          <span className="dim">·</span>
+          <span className="dim">fabrication / manufacturing</span>
+        </div>
       </div>
+
+      <hr className="rule" />
+
+      <div className="detail-body sans dim">
+        <p>This page is under construction. Content coming soon.</p>
+      </div>
+
+      <Footer />
     </div>
   );
-};
-
-export default SELProject; 
+}

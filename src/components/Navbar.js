@@ -1,73 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, NavLink } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+const NAV_LINKS = [
+  { path: '/hardware', label: 'hardware' },
+  { path: '/software', label: 'software' },
+  { path: '/about',    label: 'about' },
+  { path: '/contact',  label: 'contact' },
+];
+
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    if (!menuOpen) return;
+    const handler = (e) => {
+      if (!e.target.closest('.navbar')) setMenuOpen(false);
     };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [menuOpen]);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  // Close menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isOpen && !event.target.closest('.navbar-container')) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isOpen]);
-
-  const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/other', label: 'Other' },
-    { path: '/contact', label: 'Contact' },
-  ];
+    closeMenu();
+  }, [closeMenu]);
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${location.pathname === '/secret' ? 'secret-page' : ''}`}>
-      <div className="navbar-container">
-        <button 
-          className={`mobile-menu-button ${isOpen ? 'open' : ''}`} 
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+    <nav className="navbar">
+      <div className="navbar-inner">
+        <button className="navbar-back" onClick={() => navigate(-1)} aria-label="Go back">
+          ← back
         </button>
 
-        <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
-          {navLinks.map((link) => (
+        <NavLink to="/" className="navbar-logo">AT</NavLink>
+
+        <div className="navbar-links">
+          {NAV_LINKS.map(({ path, label }) => (
             <NavLink
-              key={link.path}
-              to={link.path}
-              className={({ isActive }) => isActive ? 'active' : ''}
-              onClick={() => setIsOpen(false)}
+              key={path}
+              to={path}
+              className={({ isActive }) => isActive ? 'navbar-link active' : 'navbar-link'}
             >
-              {link.label}
+              {label}
             </NavLink>
           ))}
         </div>
+
+        <button
+          className={`navbar-hamburger ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label="Toggle menu"
+        >
+          <span /><span /><span />
+        </button>
       </div>
+
+      {menuOpen && (
+        <div className="navbar-mobile-menu">
+          {NAV_LINKS.map(({ path, label }) => (
+            <NavLink
+              key={path}
+              to={path}
+              className={({ isActive }) => isActive ? 'navbar-mobile-link active' : 'navbar-mobile-link'}
+              onClick={closeMenu}
+            >
+              {label}
+            </NavLink>
+          ))}
+        </div>
+      )}
     </nav>
   );
-};
-
-export default Navbar; 
+}

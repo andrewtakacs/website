@@ -1,0 +1,15 @@
+{
+  "modes": [
+    {"m": 2, "n": 1, "pcr_mpa": 123.0, "depth_km": 12.24, "fos": 3.16},
+    {"m": 2, "n": 2, "pcr_mpa": 189.4, "depth_km": 18.84, "fos": 4.86},
+    {"m": 2, "n": 3, "pcr_mpa": 312.7, "depth_km": 31.10, "fos": 8.02},
+    {"m": 3, "n": 1, "pcr_mpa": 145.2, "depth_km": 14.44, "fos": 3.72},
+    {"m": 3, "n": 2, "pcr_mpa": 198.6, "depth_km": 19.75, "fos": 5.09},
+    {"m": 3, "n": 3, "pcr_mpa": 321.5, "depth_km": 31.97, "fos": 8.24},
+    {"m": 4, "n": 1, "pcr_mpa": 178.9, "depth_km": 17.80, "fos": 4.59},
+    {"m": 4, "n": 2, "pcr_mpa": 221.3, "depth_km": 22.01, "fos": 5.68},
+    {"m": 4, "n": 3, "pcr_mpa": 345.8, "depth_km": 34.39, "fos": 8.87}
+  ],
+  "p_titanic_mpa": 39.0,
+  "depth_titanic_km": 3.88
+}

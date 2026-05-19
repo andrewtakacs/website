@@ -1,62 +1,29 @@
 .footer {
-  position: fixed;
-  bottom: -80px; /* Start off-screen */
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  gap: 15px; /* Adds space between all footer icons */
-  z-index: 1000;
-  width: 40%; /* Ensure footer occupies full width */
-  justify-content: space-between; /* Makes sure there's space between icons */
-  transition: bottom 0.5s ease; /* Smooth transition for appearance */
-}
-
-.footer-show {
-  bottom: 20px; /* Move to visible position */
-}
-
-.footer-icon {
+  border-top: 1px solid var(--ink-faint);
+  padding: 1.5rem var(--hud-pad);
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  background-color: transparent;
-  width: 40px;
-  height: 40px;
-  transition: transform 0.3s ease;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim);
+  margin-top: 4rem;
 }
 
-.footer-icon img {
-  width: 100%; /* Make image fill the container */
-  height: 100%; /* Make image fill the container */
-  object-fit: contain; /* Maintain aspect ratio */
-}
-
-.footer-icon:hover {
-  transform: scale(1.1);
-}
-
-.footer-icon:active {
-  transform: scale(0.95);
-}
-
-.footer-icon-container {
+.footer-links {
   display: flex;
-  align-items: center; /* Aligns the text and icon vertically */
-  justify-content: center;
+  gap: 1.5rem;
 }
 
-.footer-icon-container p {
-  color: black;
-  margin: 0; /* Removes the default margin of <p> tag */
-  font-size: 18px; /* Adjust text size to your preference */
-  line-height: 24px; /* Aligns the text vertically with the icon */
-  white-space: nowrap; /* Prevents the text from wrapping onto a new line */
-  display: inline; /* Makes the <p> tag behave like inline content */
+.footer-link {
+  color: var(--ink-dim);
+  text-decoration: none;
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
 }
 
-.space-page svg {
-  fill: white;     /* Change fill color to white */
-  stroke: black;   /* Change stroke color to white */
-} 
+.footer-link:hover {
+  color: var(--accent);
+}

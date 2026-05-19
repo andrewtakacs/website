@@ -7,41 +7,26 @@ const OscilloscopeDisplay = ({ width = 800, height = 400 }) => {
   const animationRef = useRef(null);
   const [time, setTime] = useState(0);
 
-  const drawGrid = (ctx, width, height) => {
-    ctx.strokeStyle = '#333';
+  const drawGrid = (ctx, w, h) => {
+    const DIVS_X = 10, DIVS_Y = 8;
+    const cellW = w / DIVS_X, cellH = h / DIVS_Y;
+    ctx.strokeStyle = 'rgba(0,180,0,0.25)';
     ctx.lineWidth = 0.5;
-    ctx.font = '12px Arial';
-    ctx.fillStyle = '#0f0';
-    
-    // Add axis labels
-    ctx.font = 'bold 16px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#0f0';
-    
-    // Voltage label
-    ctx.save();
-    ctx.translate(20, height / 2);
-    ctx.rotate(-Math.PI / 2);
-    ctx.fillText('Voltage (V)', 0, 0);
-    ctx.restore();
-    
-    // Time label
-    ctx.fillText('Time (s)', width / 2, height - 10);
-    
-    // Reset for labels
-    ctx.textAlign = 'left';
-    ctx.font = '12px Arial';
-    
-    // Draw X-axis labels
-    for (let x = 0; x <= width; x += width / 10) {
-      const label = ((x / width) * 10 - 5).toFixed(1);
-      ctx.fillText(label, x - 10, height + 20);
+    for (let i = 0; i <= DIVS_X; i++) {
+      ctx.beginPath(); ctx.moveTo(i * cellW, 0); ctx.lineTo(i * cellW, h); ctx.stroke();
     }
-    
-    // Draw Y-axis labels
-    for (let y = 0; y <= height; y += height / 10) {
-      const label = ((1 - y / height) * 2 - 1).toFixed(1);
-      ctx.fillText(label, -30, y + 4);
+    for (let j = 0; j <= DIVS_Y; j++) {
+      ctx.beginPath(); ctx.moveTo(0, j * cellH); ctx.lineTo(w, j * cellH); ctx.stroke();
+    }
+    const cx = w / 2, cy = h / 2;
+    ctx.strokeStyle = 'rgba(0,200,0,0.35)';
+    for (let i = 0; i <= DIVS_X * 5; i++) {
+      const x = i * (cellW / 5);
+      ctx.beginPath(); ctx.moveTo(x, cy - 3); ctx.lineTo(x, cy + 3); ctx.stroke();
+    }
+    for (let j = 0; j <= DIVS_Y * 5; j++) {
+      const y = j * (cellH / 5);
+      ctx.beginPath(); ctx.moveTo(cx - 3, y); ctx.lineTo(cx + 3, y); ctx.stroke();
     }
   };
 
@@ -110,14 +95,16 @@ const OscilloscopeDisplay = ({ width = 800, height = 400 }) => {
   }, []);
 
   // Redraw effect
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     drawCanvas();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [time, width, height]);
 
   return (
-    <div className="oscilloscope-display">
-      <canvas ref={canvasRef} className="oscilloscope-canvas" />
+    <div className="osc-bezel">
+      <div className="canvas-container">
+        <canvas ref={canvasRef} className="oscilloscope-canvas" />
+      </div>
     </div>
   );
 };
@@ -126,41 +113,26 @@ const HeartDisplay = ({ width = 600, height = 600 }) => {
   const canvasRef = useRef(null);
   const [time, setTime] = useState(0);
 
-  const drawGrid = (ctx, width, height) => {
-    ctx.strokeStyle = '#333';
+  const drawGrid = (ctx, w, h) => {
+    const DIVS_X = 10, DIVS_Y = 8;
+    const cellW = w / DIVS_X, cellH = h / DIVS_Y;
+    ctx.strokeStyle = 'rgba(0,180,0,0.25)';
     ctx.lineWidth = 0.5;
-    ctx.font = '12px Arial';
-    ctx.fillStyle = '#0f0';
-    
-    // Add axis labels
-    ctx.font = 'bold 16px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#0f0';
-    
-    // X-axis label
-    ctx.fillText('X Signal', width / 2, height - 10);
-    
-    // Y-axis label
-    ctx.save();
-    ctx.translate(20, height / 2);
-    ctx.rotate(-Math.PI / 2);
-    ctx.fillText('Y Signal', 0, 0);
-    ctx.restore();
-    
-    // Reset for labels
-    ctx.textAlign = 'left';
-    ctx.font = '12px Arial';
-    
-    // Draw X-axis labels
-    for (let x = 0; x <= width; x += width / 10) {
-      const label = ((x / width) * 2 - 1).toFixed(1);
-      ctx.fillText(label, x - 10, height + 20);
+    for (let i = 0; i <= DIVS_X; i++) {
+      ctx.beginPath(); ctx.moveTo(i * cellW, 0); ctx.lineTo(i * cellW, h); ctx.stroke();
     }
-    
-    // Draw Y-axis labels
-    for (let y = 0; y <= height; y += height / 10) {
-      const label = ((1 - y / height) * 2 - 1).toFixed(1);
-      ctx.fillText(label, -30, y + 4);
+    for (let j = 0; j <= DIVS_Y; j++) {
+      ctx.beginPath(); ctx.moveTo(0, j * cellH); ctx.lineTo(w, j * cellH); ctx.stroke();
+    }
+    const cx = w / 2, cy = h / 2;
+    ctx.strokeStyle = 'rgba(0,200,0,0.35)';
+    for (let i = 0; i <= DIVS_X * 5; i++) {
+      const x = i * (cellW / 5);
+      ctx.beginPath(); ctx.moveTo(x, cy - 3); ctx.lineTo(x, cy + 3); ctx.stroke();
+    }
+    for (let j = 0; j <= DIVS_Y * 5; j++) {
+      const y = j * (cellH / 5);
+      ctx.beginPath(); ctx.moveTo(cx - 3, y); ctx.lineTo(cx + 3, y); ctx.stroke();
     }
   };
 
@@ -251,14 +223,16 @@ const HeartDisplay = ({ width = 600, height = 600 }) => {
   }, []);
 
   // Redraw effect
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     drawCanvas();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [time, width, height]);
 
   return (
-    <div className="oscilloscope-display">
-      <canvas ref={canvasRef} className="oscilloscope-canvas" />
+    <div className="osc-bezel">
+      <div className="canvas-container">
+        <canvas ref={canvasRef} className="oscilloscope-canvas" />
+      </div>
     </div>
   );
 };

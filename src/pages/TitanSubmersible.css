@@ -1,0 +1,171 @@
+/* 2D chart — full-width, fixed height (bar charts, line charts) */
+.titan-chart-sizer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 42%;
+  touch-action: pan-y;
+}
+
+/* Cross-section radial modes — square-ish, centered */
+.titan-radial-sizer {
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+  padding-bottom: 60%;
+  touch-action: pan-y;
+}
+
+/* Axial side-view modes — landscape */
+.titan-axial-sizer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 38%;
+  touch-action: pan-y;
+}
+
+/* Animated mode indicator */
+.titan-anim-indicator {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 0.1rem;
+}
+
+.titan-anim-label {
+  font-family: var(--font-mono);
+  font-size: 0.60rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.03em;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  padding: 0.1rem 0.3rem;
+  cursor: pointer;
+}
+
+.titan-anim-label:hover {
+  color: var(--ink-dim);
+}
+
+.titan-anim-label.active {
+  color: var(--ink);
+}
+
+/* Hover info card for P_cr bar chart */
+.titan-hover-card {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  color: var(--ink-dim);
+  padding: 0.4rem 0;
+  border-top: 1px solid var(--ink-faint);
+}
+
+.titan-hover-card strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Geometry / parameter tables */
+.titan-param-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 0.8rem 0;
+}
+
+.titan-param-block {
+  flex: 1;
+  min-width: 160px;
+}
+
+.titan-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--ink-dim);
+}
+
+.titan-table th {
+  font-weight: 500;
+  color: var(--ink);
+  padding: 0.2rem 0.4rem;
+  border-bottom: 1px solid var(--ink-faint);
+  text-align: left;
+  letter-spacing: 0.03em;
+}
+
+.titan-table td {
+  padding: 0.22rem 0.4rem;
+  border-bottom: 1px solid var(--surface);
+}
+
+.titan-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ABD matrix display grid */
+.titan-abd-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 0.8rem 0;
+}
+
+.titan-matrix-block {
+  flex: 1;
+  min-width: 180px;
+}
+
+.titan-matrix-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.60rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+/* Summary stat grid */
+.titan-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.6rem;
+  margin: 0.8rem 0;
+}
+
+.titan-summary-item {
+  border: 1px solid var(--ink-faint);
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.titan-summary-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.titan-summary-value {
+  font-family: var(--font-mono);
+  font-size: 0.80rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* Responsive: stack radial plot to full width on small screens */
+@media (max-width: 600px) {
+  .titan-radial-sizer {
+    width: 90%;
+    padding-bottom: 90%;
+  }
+}

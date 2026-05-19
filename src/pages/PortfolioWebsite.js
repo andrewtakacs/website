@@ -1,36 +1,38 @@
-import React from 'react';
-import './PortfolioWebsite.css';
 import EarthCode from '../components/EarthCode';
-import { SecurityHeaders } from '../utils/security';
+import Footer from '../components/Footer';
+import './PortfolioWebsite.css';
 
-const PortfolioWebsite = () => {
+export default function PortfolioWebsite() {
   return (
-    <div className="portfolio-website-page">
-      <SecurityHeaders title="Portfolio Website | Andrew Takacs" description="This portfolio website was built from scratch with React and JavaScript, hosted on GitHub Pages with a custom domain." />
-      <section className="portfolio-website-hero">
-        <h1 className="section-title">Portfolio Website Project</h1>
-      </section>
+    <div className="inner-page portfolio-website-page">
+      <div className="detail-header">
+        <span className="page-label">software / 003</span>
+        <h1 className="detail-title">Portfolio Website</h1>
+        <div className="detail-meta">
+          <span className="dim">2024</span>
+          <span className="dim">·</span>
+          <span className="dim">react / web</span>
+        </div>
+      </div>
+
+      <hr className="rule" />
 
       <div className="portfolio-website-content">
-        <section className="portfolio-website-section">
-          <h2>Overview</h2>
-          <div className="portfolio-website-text">
-            <h3>About This Project</h3>
-            <p>
-              This website was built from scratch using JavaScript, React and GitHub, without any pre-built components, templates, or libraries.
-            </p>
-
-            <p>
-              This makes hosting and deployment free, avoiding third-party services like WordPress. It also gives me full control over the website and its content, allowing me to customize it freely however I want. For example, I can do this:
-            </p>
-          </div>
-        </section>
+        <div className="portfolio-website-text sans dim">
+          <p>
+            Built from scratch with React and JavaScript — no templates, no pre-built component libraries.
+            Hosted on GitHub Pages with a custom domain. Full control over every detail.
+          </p>
+          <p>
+            For example, here is a rotating ASCII Earth that responds to scroll:
+          </p>
+        </div>
         <div className="earth-code-container">
           <EarthCode />
         </div>
       </div>
+
+      <Footer />
     </div>
   );
-};
-
-export default PortfolioWebsite; 
+}

@@ -1,0 +1,15 @@
+/* ── Inline figures ──────────────────────────────────────────────────────────── */
+
+.hw-figure {
+  margin: 1.5rem 0 0.7rem;
+}
+
+.hw-img {
+  width: 100%;
+  max-width: 640px;
+  display: block;
+  border: 1px solid color-mix(in srgb, var(--ink-faint) 72%, transparent);
+  border-radius: 6px;
+  box-shadow: 0 12px 34px color-mix(in srgb, var(--ink) 9%, transparent);
+  background: #fff;
+}

@@ -5,30 +5,27 @@ const XYModeDisplay = ({ width = 600, height = 600 }) => {
   const canvasRef = useRef(null);
   const [time, setTime] = useState(0);
 
-  const drawGrid = (ctx, width, height) => {
-    ctx.strokeStyle = '#333';
+  const drawGrid = (ctx, w, h) => {
+    const DIVS_X = 10, DIVS_Y = 8;
+    const cellW = w / DIVS_X, cellH = h / DIVS_Y;
+    ctx.strokeStyle = 'rgba(0,180,0,0.25)';
     ctx.lineWidth = 0.5;
-    ctx.font = '12px Arial';
-    ctx.fillStyle = '#0f0';
-    
-    // Add axis labels
-    ctx.font = 'bold 16px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#0f0';
-    
-    // X-axis label
-    ctx.fillText('X Signal', width / 2, height - 10);
-    
-    // Y-axis label
-    ctx.save();
-    ctx.translate(20, height / 2);
-    ctx.rotate(-Math.PI / 2);
-    ctx.fillText('Y Signal', 0, 0);
-    ctx.restore();
-    
-    // Reset for labels
-    ctx.textAlign = 'left';
-    ctx.font = '12px Arial';
+    for (let i = 0; i <= DIVS_X; i++) {
+      ctx.beginPath(); ctx.moveTo(i * cellW, 0); ctx.lineTo(i * cellW, h); ctx.stroke();
+    }
+    for (let j = 0; j <= DIVS_Y; j++) {
+      ctx.beginPath(); ctx.moveTo(0, j * cellH); ctx.lineTo(w, j * cellH); ctx.stroke();
+    }
+    const cx = w / 2, cy = h / 2;
+    ctx.strokeStyle = 'rgba(0,200,0,0.35)';
+    for (let i = 0; i <= DIVS_X * 5; i++) {
+      const x = i * (cellW / 5);
+      ctx.beginPath(); ctx.moveTo(x, cy - 3); ctx.lineTo(x, cy + 3); ctx.stroke();
+    }
+    for (let j = 0; j <= DIVS_Y * 5; j++) {
+      const y = j * (cellH / 5);
+      ctx.beginPath(); ctx.moveTo(cx - 3, y); ctx.lineTo(cx + 3, y); ctx.stroke();
+    }
   };
 
   const drawLissajous = (ctx, width, height) => {
@@ -116,10 +113,21 @@ const XYModeDisplay = ({ width = 600, height = 600 }) => {
 
     ctx.stroke();
 
-    // Draw the current point
-    ctx.fillStyle = '#0f0';
+    // Draw glowing dot
+    [
+      { r: 18, a: 0.06 },
+      { r: 12, a: 0.12 },
+      { r: 7,  a: 0.25 },
+      { r: 4,  a: 0.6  },
+    ].forEach(({ r, a }) => {
+      ctx.beginPath();
+      ctx.arc(currentX, currentY, r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0,255,80,${a})`;
+      ctx.fill();
+    });
     ctx.beginPath();
-    ctx.arc(currentX, currentY, 5, 0, Math.PI * 2);
+    ctx.arc(currentX, currentY, 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#ccffcc';
     ctx.fill();
   };
 
@@ -154,14 +162,16 @@ const XYModeDisplay = ({ width = 600, height = 600 }) => {
   }, []);
 
   // Redraw effect
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     drawCanvas();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [time, width, height]);
 
   return (
-    <div className="oscilloscope-display">
-      <canvas ref={canvasRef} className="oscilloscope-canvas" />
+    <div className="osc-bezel">
+      <div className="canvas-container">
+        <canvas ref={canvasRef} className="oscilloscope-canvas" />
+      </div>
     </div>
   );
 };

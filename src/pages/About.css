@@ -1,290 +1,112 @@
 .about-page {
-  padding-top: 80px;
-  min-height: 100vh;
-  background-color: var(--background-color);
-}
-
-.about-hero {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  color: var(--text-color);
-  margin-bottom: 3rem;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.section-subtitle {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-.about-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  padding-top: 3rem;
 }
 
 .about-section {
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
-.about-section h2 {
-  font-size: 2rem;
-  color: var(--primary-color);
-  margin-bottom: 1.5rem;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-.about-section h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background-color: var(--secondary-color);
-}
-
-.about-text {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--text-color);
-}
-
-.about-text p {
-  margin-bottom: 1rem;
-}
-
-.education-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.education-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.education-card:hover {
-  transform: translateY(-5px);
-}
-
-.education-card h3 {
-  color: var(--primary-color);
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-}
-
-.education-card h4 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.education-card h4[data-school="University of Washington"] {
-  color: #32006e;
-}
-
-.education-card h4[data-school="Washington State University"] {
-  color: #A60F2D;
-}
-
-.education-card h4[data-school="Bellevue College"] {
-  color: #003d79;
-}
-
-.education-card .period {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-.education-card .description {
-  color: var(--text-color);
-  line-height: 1.5;
-}
-
-.experience-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.experience-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.experience-card:hover {
-  transform: translateY(-5px);
-}
-
-.experience-header {
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.experience-card h3 {
-  color: var(--primary-color);
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
+.section-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  white-space: nowrap;
 }
 
-.experience-card h4 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-color);
+.section-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--ink-faint);
+  border: none;
 }
 
-/* Company-specific colors */
-.experience-card h4[data-company="University of Washington"] {
-  color: #4B2E83; /* UW Purple */
-}
-
-.experience-card h4[data-company="Washington State University"] {
-  color: #981E32; /* WSU Crimson */
-}
-
-.experience-card h4[data-company="Boeing"] {
-  color: #0055A4; /* Boeing's brand color */
-}
-.experience-card h4[data-company="SpaceX"] {
-  color: #000000; /* SpaceX's brand color */
-}
-.experience-card h4[data-company="Titan Electric"] {
-  color: #f09c00; /* Titan Electric's brand color */
-}
-
-.experience-card h4[data-company="BNBuilders"] {
-  color: #0055A4; /* BNBuilders' brand color */
-}
-
-.experience-card .location {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 0.25rem;
-}
-
-.experience-card .period {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-.experience-description {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  color: var(--text-color);
-}
-
-.experience-description li {
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
-}
-
-.experience-description a {
-  color: inherit;
-  text-decoration: underline;
-}
-
-.experience-description a:hover {
-  opacity: 0.8;
-}
-
-.skills-grid {
+/* Experience / Education */
+.exp-list,
+.edu-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
-.skills-column h3 {
-  color: var(--secondary-color);
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-}
-
-.skills-column ul {
-  list-style: none;
-  padding: 0;
+.exp-entry,
+.edu-entry {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: 10rem 1fr;
   gap: 1rem;
-  margin-bottom: 2rem;
+  align-items: start;
 }
 
-.skills-column li {
-  background: white;
-  padding: 0.8rem 1.2rem;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: all 0.3s ease;
+.exp-meta {
+  padding-top: 0.1rem;
+}
+
+.exp-period {
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+.exp-body {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 3rem;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
-.skills-column li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  background: var(--primary-color);
-  color: white;
+.exp-header-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  flex-wrap: wrap;
 }
 
-.certificate-link {
-  color: inherit;
+.exp-title {
+  font-size: 0.75rem;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.exp-company {
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+}
+
+/* Skills */
+.skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--ink-faint);
+  padding: 0.25rem 0.6rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.skill-link {
   text-decoration: none;
   cursor: pointer;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
 }
 
-.certificate-link:hover {
-  color: white;
-  text-decoration: none;
+.skill-link:hover {
+  border-color: var(--ink-dim);
+  color: var(--accent);
 }
 
-@media (max-width: 768px) {
-  .about-hero {
-    padding: 3rem 1rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .about-content {
-    padding: 0 1rem;
-  }
-
-  .about-section h2 {
-    font-size: 1.75rem;
-  }
-
-  .education-grid,
-  .experience-grid {
+@media (max-width: 640px) {
+  .exp-entry,
+  .edu-entry {
     grid-template-columns: 1fr;
-  }
-
-  .skills-column ul {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.3rem;
   }
 }

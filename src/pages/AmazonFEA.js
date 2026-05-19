@@ -1,37 +1,26 @@
-import React from 'react';
+import Footer from '../components/Footer';
 import './AmazonFEA.css';
-import { SecurityHeaders } from '../utils/security';
 
-const AmazonFEA = () => {
+export default function AmazonFEA() {
   return (
-    <div className="amazon-fea-page">
-      <SecurityHeaders title="Amazon Drone Bracket FEA | Andrew Takacs" description="Finite element analysis and topology optimization of an Amazon drone bracket to improve structural integrity while minimizing weight." />
-      <section className="amazon-fea-hero">
-        <h1 className="section-title">Amazon Drone Bracket FEA</h1>
-      </section>
-
-      <div className="amazon-fea-content">
-        <section className="amazon-fea-section">
-          <h2>Overview</h2>
-          <div className="amazon-fea-text">
-            <h3>Project Background</h3>
-            <p>
-              This project focused on performing finite element analysis and topology optimization 
-              on an Amazon drone bracket. The analysis was conducted to improve the structural 
-              integrity while minimizing weight.
-            </p>
-            <p>
-             This page is under construction. Please check back soon!
-        </p>
-          </div>
-        </section>
-        
-     
-
-  
+    <div className="inner-page detail-page">
+      <div className="detail-header">
+        <span className="page-label">hardware / 002</span>
+        <h1 className="detail-title">Amazon Drone Bracket FEA</h1>
+        <div className="detail-meta">
+          <span className="dim">2023</span>
+          <span className="dim">·</span>
+          <span className="dim">FEA / Topology Optimization</span>
+        </div>
       </div>
+
+      <hr className="rule" />
+
+      <div className="detail-body sans dim">
+        <p>This page is under construction. Content coming soon.</p>
+      </div>
+
+      <Footer />
     </div>
   );
-};
-
-export default AmazonFEA; 
+}

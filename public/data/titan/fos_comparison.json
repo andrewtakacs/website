@@ -1,0 +1,11 @@
+{
+  "configs": [
+    {"label": "Analytical\n(CLT)", "fos": 3.16, "type": "analytical"},
+    {"label": "Abaqus\nbaseline", "fos": 2.73, "type": "numerical"},
+    {"label": "Abaqus\n3×2.5cm", "fos": 2.77, "type": "numerical"},
+    {"label": "Abaqus\n5×2.5cm", "fos": 2.80, "type": "numerical"},
+    {"label": "Abaqus\n5×5cm", "fos": 2.86, "type": "numerical"}
+  ],
+  "fos_required": 5.0,
+  "fos_unity": 1.0
+}

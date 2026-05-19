@@ -1,21 +1,25 @@
-import React from 'react';
+import Footer from '../components/Footer';
 import './Certificates.css';
-import { SecurityHeaders } from '../utils/security';
 
-const Certificates = () => {
+export default function Certificates() {
   return (
-    <div className="certificates-page">
-      <SecurityHeaders title="Certificates | Andrew Takacs" description="Professional certifications and credentials earned by Andrew Takacs." />
+    <div className="inner-page certificates-page">
+      <div className="certificates-header">
+        <span className="page-label">certificates</span>
+      </div>
+
+      <hr className="rule" />
+
       <div className="certificates-container">
         <div className="certificate-card">
-          <img src={`${process.env.PUBLIC_URL}/images/Certificate_1.jpg`} alt="Certificate 1" />
+          <img src={`${process.env.PUBLIC_URL}/images/Certificate_1.jpg`} alt="Certificate 1" loading="lazy" />
         </div>
         <div className="certificate-card">
-          <img src={`${process.env.PUBLIC_URL}/images/Certificate_2.jpg`} alt="Certificate 2" />
+          <img src={`${process.env.PUBLIC_URL}/images/Certificate_2.jpg`} alt="Certificate 2" loading="lazy" />
         </div>
       </div>
+
+      <Footer />
     </div>
   );
-};
-
-export default Certificates; 
+}

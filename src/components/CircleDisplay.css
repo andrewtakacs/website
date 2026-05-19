@@ -1,114 +1,272 @@
-.controls {
+/* ── Oscilloscope shell ───────────────────────────────────────────────────── */
+.oscilloscope-display {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  align-items: center;
+  background: #1a1a1a;
+  border: 3px solid #2e2e2e;
+  border-radius: 12px;
+  padding: 20px 20px 16px;
+  box-shadow:
+    0 0 0 1px #111,
+    0 8px 32px rgba(0,0,0,0.7),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  font-family: 'Courier New', monospace;
+  gap: 16px;
   width: 100%;
+  box-sizing: border-box;
 }
 
+/* ── Screen bezel ─────────────────────────────────────────────────────────── */
+.canvas-container {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: #000;
+  border-radius: 8px;
+  border: 6px solid #2a2a2a;
+  box-shadow:
+    inset 0 0 40px rgba(0,255,0,0.04),
+    inset 0 0 2px #000,
+    0 0 0 1px #111;
+  overflow: hidden;
+}
+
+/* CRT scanline overlay */
+.canvas-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,0.18) 3px,
+    rgba(0,0,0,0.18) 4px
+  );
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+/* subtle CRT vignette */
+.canvas-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.oscilloscope-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── Play/stop button — top-right of screen ──────────────────────────────── */
+.screen-buttons {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  display: flex;
+  gap: 4px;
+}
+
+.animation-control {
+  position: static;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  background: #111;
+  color: #00ff00;
+  border: 1px solid #00aa00;
+  border-radius: 3px;
+  padding: 3px 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.animation-control:hover  { background: #003300; }
+.animation-control.active { color: #ff4444; border-color: #aa0000; }
+.animation-control.active:hover { background: #330000; }
+
+/* ── Front panel controls ────────────────────────────────────────────────── */
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px 16px;
+  width: 100%;
+  background: #1e1e1e;
+  border-top: 2px solid #2a2a2a;
+  padding-top: 14px;
+}
+
+/* ── Individual knob/slider group ────────────────────────────────────────── */
 .control-group {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 8px 10px;
 }
 
 .control-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .control-label {
-  color: #0f0;
-  font-family: 'Courier New', monospace;
-  min-width: 120px;
+  color: #00cc00;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.wave-select {
-  background-color: #000;
-  color: #0f0;
-  border: 1px solid #0f0;
-  padding: 2px 5px;
+/* ── Range sliders — styled as oscilloscope faders ───────────────────────── */
+.control-slider,
+.smoothing-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: #2a2a2a;
+  border-radius: 2px;
+  outline: none;
   cursor: pointer;
+  margin-top: 2px;
+}
+.control-slider::-webkit-slider-thumb,
+.smoothing-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #00cc00;
+  border: 2px solid #009900;
+  box-shadow: 0 0 4px rgba(0,255,0,0.4);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.control-slider::-webkit-slider-thumb:hover,
+.smoothing-slider::-webkit-slider-thumb:hover {
+  background: #00ff00;
+  box-shadow: 0 0 8px rgba(0,255,0,0.7);
+}
+.control-slider::-moz-range-thumb,
+.smoothing-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #00cc00;
+  border: 2px solid #009900;
+  cursor: pointer;
+}
+
+/* ── Wave type select ────────────────────────────────────────────────────── */
+.wave-select {
+  background: #111;
+  color: #00cc00;
+  border: 1px solid #2a4a2a;
+  border-radius: 3px;
+  padding: 2px 4px;
   font-family: 'Courier New', monospace;
+  font-size: 11px;
+  cursor: pointer;
+  outline: none;
+}
+.wave-select:focus { border-color: #00cc00; }
+
+/* ── Wave type toggle buttons ────────────────────────────────────────────── */
+.wave-toggle-row {
+  display: flex;
+  gap: 4px;
+  margin: 2px 0;
+}
+
+.wave-toggle {
+  flex: 1;
+  background: #111;
+  color: #006600;
+  border: 1px solid #1a3a1a;
+  border-radius: 3px;
+  padding: 3px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.wave-toggle:hover {
+  background: #0a1f0a;
+  color: #00aa00;
+  border-color: #2a5a2a;
+}
+.wave-toggle.selected {
+  background: #002200;
+  color: #00ff00;
+  border-color: #00aa00;
+  box-shadow: inset 0 0 4px rgba(0,255,0,0.15), 0 0 4px rgba(0,255,0,0.1);
 }
 
 .smoothing-control {
-  display:flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.smoothing-slider {
-  width: 150px;
-}
-
-.control-slider {
-  width: 100%;
-}
-
-.button-group {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 2px;
+  color: #009900;
+  font-size: 10px;
+}
+
+/* ── Button row ──────────────────────────────────────────────────────────── */
+.button-group {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 6px 0 2px;
+  border-top: 1px solid #2a2a2a;
 }
 
 .control-button {
-  background-color: #000;
-  color: #0f0;
-  border: 1px solid #0f0;
-  padding: 5px 10px;
-  cursor: pointer;
+  background: #111;
+  color: #00cc00;
+  border: 1px solid #2a4a2a;
+  border-radius: 4px;
+  padding: 5px 14px;
   font-family: 'Courier New', monospace;
-  transition: all 0.2s ease;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 0 #000, inset 0 1px 0 rgba(255,255,255,0.04);
 }
-
 .control-button:hover {
-  background-color: #0f0;
-  color: #000;
+  background: #003300;
+  box-shadow: 0 0 6px rgba(0,255,0,0.25), 0 2px 0 #000;
 }
-
+.control-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #000;
+}
 .control-button.active {
-  color: #f00;
-  border-color: #f00;
+  color: #ff4444;
+  border-color: #662222;
+  box-shadow: 0 0 6px rgba(255,0,0,0.2), 0 2px 0 #000;
 }
-
-.control-button.active:hover {
-  background-color: #f00;
-  color: #000;
-}
-
-.canvas-container {
-  position: relative;
-  display: inline-block;
-}
-
-.animation-control {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #000;
-  color: #0f0;
-  border: 1px solid #0f0;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-family: 'Courier New', monospace;
-  transition: all 0.2s ease;
-  z-index: 10;
-}
-
-.animation-control:hover {
-  background-color: #0f0;
-  color: #000;
-}
-
-.animation-control.active {
-  color: #f00;
-  border-color: #f00;
-}
-
-.animation-control.active:hover {
-  background-color: #f00;
-  color: #000;
-}
+.control-button.active:hover { background: #330000; }

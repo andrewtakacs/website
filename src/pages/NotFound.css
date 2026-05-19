@@ -1,0 +1,119 @@
+.not-found-page {
+  position: fixed;
+  top: 3rem; /* below navbar */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* message sits above the grid */
+.not-found-message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 3rem;
+  box-sizing: border-box;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.not-found-message a {
+  pointer-events: auto;
+}
+
+.not-found-text {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  max-width: 1100px;
+}
+
+.not-found-home {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  transition: color 0.15s;
+}
+
+.not-found-home:hover {
+  color: var(--accent);
+}
+
+/* checkerboard overlay sits on top */
+.not-found-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  grid-auto-rows: calc((100vh - 3rem) / var(--grid-rows));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.not-found-tile {
+  background: var(--ink);
+  transition: background-color 0.35s ease;
+}
+
+.not-found-tile.gone {
+  background: var(--bg);
+  pointer-events: none;
+}
+
+.not-found-tile.pinned {
+  transform-origin: center;
+  overflow: visible;
+  position: relative;
+}
+
+.not-found-tile.pinned.tilted {
+  animation: tile-tilt 0.8s ease-in-out 1 forwards;
+}
+
+@keyframes tile-tilt {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(-12deg); }
+}
+
+.not-found-dancer {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  line-height: 1.4;
+  color: var(--ink);
+  white-space: pre;
+  text-align: center;
+  pointer-events: none;
+  margin: 0;
+  z-index: 3;
+}
+
+/* on-tile: inside the tile div, rotates with it */
+.not-found-dancer--ontile {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* free dancer: absolutely positioned in the page */
+.not-found-dancer--free {
+  position: absolute;
+  transform: translateX(-50%) translateY(-100%);
+}
+
+/* slide transition: eases left along slope */
+.not-found-dancer--free.sliding {
+  transition: left 0.65s ease-in, top 0.65s ease-in;
+}
+
+/* fall transition: drops straight down */
+.not-found-dancer--free.falling {
+  transition: top 1.2s cubic-bezier(0.25, 0, 1, 1);
+}

@@ -32,7 +32,7 @@ const CircleDisplay = ({ width = 600, height = 600 }) => {
   const [smoothingY, setSmoothingY] = useState(0);
   const [phase, setPhase] = useState(Math.PI / 2);
   const [isPhaseRotating, setIsPhaseRotating] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(true);
 
   // Lissajous demo
   const demoPatterns = [
@@ -203,29 +203,40 @@ const CircleDisplay = ({ width = 600, height = 600 }) => {
   };
 
   const drawGrid = (ctx, width, height) => {
-    ctx.strokeStyle = '#333';
+    const DIVS_X = 10;
+    const DIVS_Y = 8;
+    const cellW = width  / DIVS_X;
+    const cellH = height / DIVS_Y;
+
+    // Major graticule lines
+    ctx.strokeStyle = 'rgba(0,180,0,0.25)';
     ctx.lineWidth = 0.5;
-    ctx.font = '12px Arial';
-    ctx.fillStyle = '#0f0';
-    
-    // Add axis labels
-    ctx.font = 'bold 16px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#0f0';
-    
-    // X-axis label
-    ctx.fillText('X Signal', width / 2, height - 10);
-    
-    // Y-axis label
-    ctx.save();
-    ctx.translate(20, height / 2);
-    ctx.rotate(-Math.PI / 2);
-    ctx.fillText('Y Signal', 0, 0);
-    ctx.restore();
-    
-    // Reset for labels
-    ctx.textAlign = 'left';
-    ctx.font = '12px Arial';
+    for (let i = 0; i <= DIVS_X; i++) {
+      ctx.beginPath();
+      ctx.moveTo(i * cellW, 0);
+      ctx.lineTo(i * cellW, height);
+      ctx.stroke();
+    }
+    for (let j = 0; j <= DIVS_Y; j++) {
+      ctx.beginPath();
+      ctx.moveTo(0, j * cellH);
+      ctx.lineTo(width, j * cellH);
+      ctx.stroke();
+    }
+
+    // Minor tick marks along centre axes
+    ctx.strokeStyle = 'rgba(0,200,0,0.35)';
+    ctx.lineWidth = 0.5;
+    const cx = width / 2, cy = height / 2;
+    const TICKS = 5;
+    for (let i = 0; i <= DIVS_X * TICKS; i++) {
+      const x = i * (cellW / TICKS);
+      ctx.beginPath(); ctx.moveTo(x, cy - 3); ctx.lineTo(x, cy + 3); ctx.stroke();
+    }
+    for (let j = 0; j <= DIVS_Y * TICKS; j++) {
+      const y = j * (cellH / TICKS);
+      ctx.beginPath(); ctx.moveTo(cx - 3, y); ctx.lineTo(cx + 3, y); ctx.stroke();
+    }
   };
 
   const drawCircle = (ctx, width, height) => {
@@ -339,31 +350,42 @@ const CircleDisplay = ({ width = 600, height = 600 }) => {
 
     ctx.stroke();
 
-    // Draw the current point at the intersection
-    ctx.fillStyle = '#0f0';
-    ctx.beginPath();
-    ctx.arc(dotX, dotY, 5, 0, Math.PI * 2);
-    ctx.fill();
+    // Draw glowing dot at the intersection
+    const glowDot = (x, y) => {
+      [
+        { r: 18, a: 0.06 },
+        { r: 12, a: 0.12 },
+        { r: 7,  a: 0.25 },
+        { r: 4,  a: 0.6  },
+      ].forEach(({ r, a }) => {
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0,255,80,${a})`;
+        ctx.fill();
+      });
+      ctx.beginPath();
+      ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#ccffcc';
+      ctx.fill();
+    };
+    glowDot(dotX, dotY);
   };
 
   const drawCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    
+
     const ctx = canvas.getContext('2d');
 
-    // Set canvas size
     canvas.width = width;
     canvas.height = height;
 
-    // Clear canvas
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, width, height);
 
-    // Draw grid
+    if (!isAnimating) return;
+
     drawGrid(ctx, width, height);
-    
-    // Draw circle
     drawCircle(ctx, width, height);
   };
 
@@ -444,20 +466,22 @@ const CircleDisplay = ({ width = 600, height = 600 }) => {
   }, [isPhaseRotating]);
 
   // Redraw effect
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     drawCanvas();
-  }, [time, width, height, frequencyX, frequencyY, magnitudeX, magnitudeY, rotation, centerX, centerY]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [time, width, height, frequencyX, frequencyY, magnitudeX, magnitudeY, rotation, centerX, centerY, isAnimating]);
 
   // Update oscillator frequencies and gains when they change
+  // Audio only plays when both isPlaying and isAnimating are true
   useEffect(() => {
     if (oscillatorXRef.current && oscillatorYRef.current) {
       oscillatorXRef.current.frequency.value = frequencyX * 100;
       oscillatorYRef.current.frequency.value = frequencyY * 100;
-      gainNodeXRef.current.gain.value = isPlaying ? magnitudeX * 0.1 : 0;
-      gainNodeYRef.current.gain.value = isPlaying ? magnitudeY * 0.1 : 0;
+      const on = isPlaying && isAnimating;
+      gainNodeXRef.current.gain.value = on ? magnitudeX * 0.1 : 0;
+      gainNodeYRef.current.gain.value = on ? magnitudeY * 0.1 : 0;
     }
-  }, [frequencyX, frequencyY, magnitudeX, magnitudeY, isPlaying]);
+  }, [frequencyX, frequencyY, magnitudeX, magnitudeY, isPlaying, isAnimating]);
 
   // Demo effect
   useEffect(() => {
@@ -565,25 +589,28 @@ const CircleDisplay = ({ width = 600, height = 600 }) => {
   }, [isMagnitudeDemoPlaying]);
 
   const toggleDemo = () => {
-    setIsDemoPlaying(!isDemoPlaying);
-    setIsAnimating(!isDemoPlaying);
+    const starting = !isDemoPlaying;
+    setIsDemoPlaying(starting);
+    setIsAnimating(true);
     if (isSongPlaying) setIsSongPlaying(false);
   };
 
   const toggleSong = () => {
-    setIsSongPlaying(!isSongPlaying);
-    setIsAnimating(!isSongPlaying);
+    const starting = !isSongPlaying;
+    setIsSongPlaying(starting);
+    setIsAnimating(true);
     if (isDemoPlaying) setIsDemoPlaying(false);
     if (isMagnitudeDemoPlaying) setIsMagnitudeDemoPlaying(false);
   };
 
   const toggleMagnitudeDemo = () => {
-    if (!isMagnitudeDemoPlaying) {
+    const starting = !isMagnitudeDemoPlaying;
+    if (starting) {
       setFrequencyX(3);
       setFrequencyY(3);
     }
-    setIsMagnitudeDemoPlaying(!isMagnitudeDemoPlaying);
-    setIsAnimating(!isMagnitudeDemoPlaying);
+    setIsMagnitudeDemoPlaying(starting);
+    setIsAnimating(true);
     if (isSongPlaying) setIsSongPlaying(false);
     if (isDemoPlaying) setIsDemoPlaying(false);
   };
@@ -592,47 +619,55 @@ const CircleDisplay = ({ width = 600, height = 600 }) => {
     <div className="oscilloscope-display">
       <div className="canvas-container">
         <canvas ref={canvasRef} className="oscilloscope-canvas" />
-        <button 
-          onClick={() => setIsAnimating(!isAnimating)}
-          className={`animation-control ${isAnimating ? 'active' : ''}`}
-        >
-          {isAnimating ? '◼' : '▶'}
-        </button>
+        <div className="screen-buttons">
+          <button
+            onClick={() => {
+              const next = !isAnimating;
+              setIsAnimating(next);
+              if (!next) {
+                setIsDemoPlaying(false);
+                setIsSongPlaying(false);
+                setIsMagnitudeDemoPlaying(false);
+                setIsRotating(false);
+                setIsPhaseRotating(false);
+              }
+            }}
+            className={`animation-control ${isAnimating ? 'active' : ''}`}
+          >
+            {isAnimating ? '◼' : '▶'}
+          </button>
+          <button
+            onClick={toggleAudio}
+            className={`animation-control ${isPlaying ? 'active' : ''}`}
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="1,4 5,4 9,1 9,13 5,10 1,10" />
+              {isPlaying && <>
+                <path d="M10.5,4.5 Q12.5,7 10.5,9.5" fill="none" stroke="currentColor" strokeWidth="1.2"/>
+                <path d="M11.5,2.5 Q14.5,7 11.5,11.5" fill="none" stroke="currentColor" strokeWidth="1.2"/>
+              </>}
+            </svg>
+          </button>
+        </div>
       </div>
       <div className="controls">
         <div className="control-group">
           <div className="control-row">
-            <label className="control-label">Frequency X: {frequencyX} ({(frequencyX * 100).toFixed(2)}Hz)</label>
-            <select
-              value={waveTypeX}
-              onChange={(e) => setWaveTypeX(e.target.value)}
-              className="wave-select"
-            >
-              <option value="sine">Sine</option>
-              <option value="triangle">Triangle</option>
-              <option value="sawtooth">Sawtooth</option>
-              <option value="square">Square</option>
-            </select>
-            {(waveTypeX === 'triangle' || waveTypeX === 'sawtooth') && (
-              <div className="smoothing-control">
-                <label style={{ minWidth: '150px' }}>Smooth: {(smoothingX * 100).toFixed(0)}%</label>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value={smoothingX}
-                  onChange={(e) => setSmoothingX(parseFloat(e.target.value))}
-                  className="smoothing-slider"
-                />
-              </div>
-            )}
+            <label className="control-label">Freq X: {frequencyX} · {(frequencyX * 100).toFixed(0)}Hz</label>
           </div>
+          <div className="wave-toggle-row">
+            {waveTypes.map(w => (
+              <button key={w} onClick={() => setWaveTypeX(w)} className={`wave-toggle ${waveTypeX === w ? 'selected' : ''}`}>{w.slice(0,3).toUpperCase()}</button>
+            ))}
+          </div>
+          {(waveTypeX === 'triangle' || waveTypeX === 'sawtooth') && (
+            <div className="smoothing-control">
+              <label>Smooth: {(smoothingX * 100).toFixed(0)}%</label>
+              <input type="range" min="0" max="1" step="0.1" value={smoothingX} onChange={(e) => setSmoothingX(parseFloat(e.target.value))} className="smoothing-slider" />
+            </div>
+          )}
           <input
-            type="range"
-            min="1"
-            max="5"
-            step="1"
+            type="range" min="1" max="5" step="1"
             value={Math.round(frequencyX)}
             onChange={(e) => setFrequencyX(parseInt(e.target.value))}
             disabled={isSongPlaying}
@@ -641,37 +676,21 @@ const CircleDisplay = ({ width = 600, height = 600 }) => {
         </div>
         <div className="control-group">
           <div className="control-row">
-            <label className="control-label">Frequency Y: {frequencyY} ({(frequencyY * 100).toFixed(2)}Hz)</label>
-            <select
-              value={waveTypeY}
-              onChange={(e) => setWaveTypeY(e.target.value)}
-              className="wave-select"
-            >
-              <option value="sine">Sine</option>
-              <option value="triangle">Triangle</option>
-              <option value="sawtooth">Sawtooth</option>
-              <option value="square">Square</option>
-            </select>
-            {(waveTypeY === 'triangle' || waveTypeY === 'sawtooth') && (
-              <div className="smoothing-control">
-                <label style={{ minWidth: '150px' }}>Smooth: {(smoothingY * 100).toFixed(0)}%</label>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value={smoothingY}
-                  onChange={(e) => setSmoothingY(parseFloat(e.target.value))}
-                  className="smoothing-slider"
-                />
-              </div>
-            )}
+            <label className="control-label">Freq Y: {frequencyY} · {(frequencyY * 100).toFixed(0)}Hz</label>
           </div>
+          <div className="wave-toggle-row">
+            {waveTypes.map(w => (
+              <button key={w} onClick={() => setWaveTypeY(w)} className={`wave-toggle ${waveTypeY === w ? 'selected' : ''}`}>{w.slice(0,3).toUpperCase()}</button>
+            ))}
+          </div>
+          {(waveTypeY === 'triangle' || waveTypeY === 'sawtooth') && (
+            <div className="smoothing-control">
+              <label>Smooth: {(smoothingY * 100).toFixed(0)}%</label>
+              <input type="range" min="0" max="1" step="0.1" value={smoothingY} onChange={(e) => setSmoothingY(parseFloat(e.target.value))} className="smoothing-slider" />
+            </div>
+          )}
           <input
-            type="range"
-            min="1"
-            max="5"
-            step="1"
+            type="range" min="1" max="5" step="1"
             value={Math.round(frequencyY)}
             onChange={(e) => setFrequencyY(parseInt(e.target.value))}
             disabled={isSongPlaying}
@@ -775,18 +794,12 @@ const CircleDisplay = ({ width = 600, height = 600 }) => {
           />
         </div>
         <div className="button-group">
-          <button 
-            onClick={toggleAudio}
-            className={`control-button ${isPlaying ? 'active' : ''}`}
-          >
-            {isPlaying ? 'Stop Audio' : 'Play Audio'}
-          </button>
           {audioError && (
             <div className="error-message" style={{ color: 'red', marginTop: '10px' }}>
               {audioError}
             </div>
           )}
-          <button 
+          <button
             onClick={toggleDemo}
             className={`control-button ${isDemoPlaying ? 'active' : ''}`}
           >

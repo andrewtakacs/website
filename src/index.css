@@ -1,37 +1,62 @@
 :root {
-  /* Light theme variables */
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --text-color: #333;
-  --background-color: #ffffff;
-  --surface-color: #f8f9fa;
-  --border-color: #dee2e6;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --bg:        #f6f4f0;
+  --ink:       #181715;
+  --ink-dim:   #6B6863;
+  --ink-faint: #C4C0B8;
+  --accent:    #B8581A;
+  --surface:   #DEDAD2;
+
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --unit: 1.5rem;
+  --hud-pad: 1.5rem;
 }
 
-.dark-theme {
-  --primary-color: #4dabf7;
-  --secondary-color: #adb5bd;
-  --text-color: #e9ecef;
-  --background-color: #212529;
-  --surface-color: #343a40;
-  --border-color: #495057;
-  --shadow-color: rgba(0, 0, 0, 0.3);
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  color: inherit;
+  font-size: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bg);
+}

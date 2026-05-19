@@ -1,0 +1,96 @@
+/* ── SHRED architecture diagram ─────────────────────────────────────────────── */
+
+.shred-arch {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 1.5rem 0 0.5rem;
+  font-size: 0.78rem;
+}
+
+.arch-block {
+  border: 1px solid var(--ink-faint);
+  padding: 0.7rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 130px;
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.arch-lstm {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 4%, var(--surface));
+}
+
+.arch-label {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.arch-lstm .arch-label {
+  color: var(--accent);
+}
+
+.arch-math {
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.arch-note {
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+}
+
+.arch-connector {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 2px;
+}
+
+.arch-arrow-line {
+  width: 18px;
+  height: 1px;
+  background: var(--ink-faint);
+}
+
+.arch-arrow-head {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  line-height: 1;
+  margin-left: -3px;
+}
+
+@media (max-width: 700px) {
+  .shred-arch {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .arch-connector {
+    flex-direction: column;
+    padding: 2px 0;
+    align-items: flex-start;
+    padding-left: 1rem;
+  }
+  .arch-arrow-line {
+    width: 1px;
+    height: 14px;
+  }
+  .arch-arrow-head {
+    transform: rotate(90deg);
+    margin-left: 0;
+    margin-top: -3px;
+  }
+  .arch-block {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

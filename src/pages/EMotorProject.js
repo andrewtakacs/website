@@ -1,31 +1,26 @@
-import React from 'react';
+import Footer from '../components/Footer';
 import './EMotorProject.css';
-import { SecurityHeaders } from '../utils/security';
 
-const EMotorProject = () => {
+export default function EMotorProject() {
   return (
-    <div className="emotor-page">
-      <SecurityHeaders title="eMotor Transmission Fixture | Andrew Takacs" description="Capstone project designing and building a fuel cell electric vehicle eMotor transmission fixture at Washington State University." />
-      <section className="emotor-hero">
-        <h1 className="section-title">Fuel Cell Electric Vehicle eMotor Transmission Fixture</h1>
-      </section>
-
-      <div className="emotor-content">
-        <section className="emotor-section">
-          <h2>Overview</h2>
-          <div className="emotor-text">
-            <h3>Project Background</h3>
-            <p>
-            This page is under construction. Please check back soon!
-            </p>
-          </div>
-        </section>
-
-      
-      
+    <div className="inner-page detail-page">
+      <div className="detail-header">
+        <span className="page-label">hardware / 001</span>
+        <h1 className="detail-title">Fuel Cell E-Motor Transmission Fixture</h1>
+        <div className="detail-meta">
+          <span className="dim">2024</span>
+          <span className="dim">·</span>
+          <span className="dim">design / fabrication</span>
+        </div>
       </div>
+
+      <hr className="rule" />
+
+      <div className="detail-body sans dim">
+        <p>This page is under construction. Content coming soon.</p>
+      </div>
+
+      <Footer />
     </div>
   );
-};
-
-export default EMotorProject; 
+}
