@@ -51,3 +51,38 @@
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+.detail-header {
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-title {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.detail-meta {
+  display: flex;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+}
+
+.detail-body {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.detail-body p {
+  margin-bottom: 0.8rem;
+}

@@ -2,30 +2,6 @@
   padding-top: 1rem;
 }
 
-.detail-header {
-  padding-top: 3rem;
-  padding-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.detail-title {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--ink);
-  letter-spacing: 0.02em;
-}
-
-.detail-meta {
-  display: flex;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.04em;
-}
-
 .ai-projects-text {
   font-family: var(--font-sans);
   font-size: 0.78rem;
