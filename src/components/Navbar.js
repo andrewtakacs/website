@@ -8,17 +8,21 @@ const NAV_LINKS = [
   { path: '/about',    label: 'about' },
 ];
 
-const TOP_LEVEL = new Set(['/', '/hardware', '/software', '/about', '/contact']);
-
 function getInitialTheme() {
   const stored = localStorage.getItem('theme');
   if (stored) return stored;
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-const IconSun = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M12 4.5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 12 4.5zm0 13.5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5a.75.75 0 0 1 .75-.75zM4.5 12a.75.75 0 0 1-.75.75H2.25a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 4.5 12zm16.5 0a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 .75.75zM6.697 7.757a.75.75 0 0 1 0 1.06l-1.06 1.062a.75.75 0 1 1-1.062-1.061l1.061-1.061a.75.75 0 0 1 1.061 0zm11.666 9.546a.75.75 0 0 1 0 1.06l-1.06 1.061a.75.75 0 0 1-1.062-1.06l1.061-1.062a.75.75 0 0 1 1.061 0zm-9.546 1.06a.75.75 0 0 1-1.06 0l-1.061-1.06a.75.75 0 0 1 1.06-1.062l1.062 1.061a.75.75 0 0 1 0 1.061zM18.364 6.697a.75.75 0 0 1-1.061 0l-1.062-1.06a.75.75 0 0 1 1.061-1.062l1.062 1.061a.75.75 0 0 1 0 1.061zM12 8.25a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5z"/>
+const IconLight = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path
+      d="M9 18h6M10 22h4M8.5 14.5c-1.25-1.05-2-2.55-2-4.25a5.5 5.5 0 0 1 11 0c0 1.7-.75 3.2-2 4.25-.7.58-1 1.05-1 1.75h-5c0-.7-.3-1.17-1-1.75Z"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
@@ -38,8 +42,13 @@ export default function Navbar() {
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
+    const root = document.documentElement;
+    root.dataset.theme = theme;
+    root.style.colorScheme = theme;
     localStorage.setItem('theme', theme);
+    const metas = document.querySelectorAll('meta[name="theme-color"]');
+    const color = theme === 'dark' ? '#1e1e1e' : '#f6f4f0';
+    metas.forEach(m => m.setAttribute('content', color));
   }, [theme]);
 
   useEffect(() => {
@@ -97,7 +106,7 @@ export default function Navbar() {
         </div>
 
         <button className="navbar-theme" onClick={toggleTheme} aria-label="Toggle theme">
-          {theme === 'dark' ? <IconSun /> : <IconMoon />}
+          {theme === 'dark' ? <IconLight /> : <IconMoon />}
         </button>
 
         <button

@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="color-scheme" content="light dark" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrew Takacs</title>
+    <script>
+      (function() {
+        var t = localStorage.getItem('theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.style.colorScheme = t;
+      })();
+    </script>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=2">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=2">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=2">
     <link rel="manifest" href="/manifest.json?v=2" />
     <link rel="shortcut icon" href="/images/favicon.ico?v=2" />
-    <meta name="theme-color" content="#f6f4f0" />
-    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f6f4f0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1e1e1e" media="(prefers-color-scheme: dark)" />
     <meta name="description" content="Andrew Takacs - Personal Portfolio" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Andrew Takacs" />
@@ -25,7 +34,7 @@
     <meta name="twitter:title" content="Andrew Takacs Portfolio" />
     <meta name="twitter:description" content="Software Engineer & Problem Solver" />
     <meta name="twitter:image" content="/images/android-chrome-512x512.png" />
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,4 +49,4 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
-</html> 
+</html>

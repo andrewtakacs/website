@@ -3,7 +3,7 @@ import Footer from '../components/Footer';
 import HARDWARE_PROJECTS from '../data/hardwareProjects';
 import './Hardware.css';
 
-const SORTED = [...HARDWARE_PROJECTS].sort((a, b) => new Date(b.date) - new Date(a.date));
+const SORTED = [...HARDWARE_PROJECTS].filter(p => !p.hidden).sort((a, b) => new Date(b.date) - new Date(a.date));
 
 export default function Hardware() {
   return (

@@ -5,6 +5,7 @@ const HARDWARE_PROJECTS = [
     date: '2024-08-01',
     link: '/emotor-project',
     image: '/images/eMotor.png',
+    hidden: true,
   },
   {
     title: 'Amazon Drone Bracket FEA',
@@ -12,6 +13,7 @@ const HARDWARE_PROJECTS = [
     date: '2023-12-01',
     link: '/amazon-fea',
     image: '/images/amazon.jpg',
+    hidden: true,
   },
   {
     title: 'SEL Manufacturing Process Engineering',
@@ -19,6 +21,7 @@ const HARDWARE_PROJECTS = [
     date: '2023-08-01',
     link: '/sel-project',
     image: '/images/SEL.png',
+    hidden: true,
   },
   {
     title: 'Super Slim pwnagotchi',

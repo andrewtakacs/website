@@ -92,10 +92,6 @@
   color: var(--accent);
 }
 
-.home-email-obf::before {
-  content: attr(data-email);
-}
-
 @media (max-width: 640px) {
   .home-section {
     padding: 4rem 1.5rem 6rem 1.5rem;

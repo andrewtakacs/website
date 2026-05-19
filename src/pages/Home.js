@@ -101,7 +101,6 @@ export default function Home() {
           <span className="home-section-num">04</span>
           <Link to="/contact" className="home-section-title">Contact</Link>
           <div className="home-section-bio">
-            <p data-email={atob('YW5kcmV3ZHRha2Fjc0Bob3RtYWlsLmNvbQ==')} className="home-email-obf" />
             <p>github.com/andrewtakacs</p>
             <p>linkedin.com/in/takacsandrew</p>
           </div>

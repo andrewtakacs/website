@@ -13,6 +13,16 @@ const COLORS = {
   running: '#181715',
 };
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  useEffect(() => {
+    const fn = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', fn);
+    return () => window.removeEventListener('resize', fn);
+  }, []);
+  return isMobile;
+}
+
 function useScrollPassthrough() {
   const ref = useRef(null);
   const handler = useCallback((e) => {
@@ -77,6 +87,7 @@ function buildBones(frame, I, J) {
 function SkeletonPanel({ action, Plot, skelData }) {
   const [frame, setFrame] = useState(0);
   const sizerRef = useScrollPassthrough();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (!skelData) return;
@@ -132,7 +143,7 @@ function SkeletonPanel({ action, Plot, skelData }) {
         <Plot
           data={traces}
           layout={layout}
-          config={{ ...plotConfig, displayModeBar: false }}
+          config={{ ...plotConfig, displayModeBar: false, staticPlot: isMobile }}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
           useResizeHandler
         />
@@ -249,6 +260,7 @@ function PCAScatterPlot({ dataFile, caption, showCentroids = false }) {
   const [Plot, setPlot] = useState(null);
   const [d, setD] = useState(null);
   const sizerRef = useScrollPassthrough();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     Promise.all([loadPlotly(), fetch(dataFile).then(r => r.json())])
@@ -286,7 +298,7 @@ function PCAScatterPlot({ dataFile, caption, showCentroids = false }) {
         <Plot
           data={traces}
           layout={baseLayout}
-          config={plotConfig}
+          config={{ ...plotConfig, staticPlot: isMobile }}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
           useResizeHandler
         />
