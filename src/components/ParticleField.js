@@ -15,6 +15,16 @@ const TUBE_DRIVE  = ORBIT_DRIVE * 0.55;
 const DAMPING     = 0.91;
 const DU_SS       = ORBIT_DRIVE / (1 - DAMPING);
 
+function readColors() {
+  const s = getComputedStyle(document.documentElement);
+  const bg  = s.getPropertyValue('--bg').trim() || '#f6f4f0';
+  const ink = s.getPropertyValue('--ink').trim() || '#181715';
+  const r = parseInt(ink.slice(1, 3), 16);
+  const g = parseInt(ink.slice(3, 5), 16);
+  const b = parseInt(ink.slice(5, 7), 16);
+  return { bg, inkRGB: `${r},${g},${b}` };
+}
+
 function mulberry32(seed) {
   let s = seed >>> 0;
   return () => {
@@ -51,10 +61,27 @@ export default function ParticleField({ params, onMetricsUpdate }) {
     mouse:     { x: -9999, y: -9999 },
     animFrame: null,
     params,
+    colors:    { bg: '#f6f4f0', inkRGB: '26,25,23' },
   });
 
   useEffect(() => { stateRef.current.params = params; }, [params]);
   useEffect(() => { stateRef.current.noise2D = makeNoise(params.seed); }, [params.seed]);
+
+  useEffect(() => {
+    stateRef.current.colors = readColors();
+
+    const refresh = () => { stateRef.current.colors = readColors(); };
+
+    const mo = new MutationObserver(refresh);
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    if (window.matchMedia) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      mq.addEventListener('change', refresh);
+      return () => { mo.disconnect(); mq.removeEventListener('change', refresh); };
+    }
+    return () => mo.disconnect();
+  }, []);
 
   const rebuildParticles = useCallback((count) => {
     const arr = [];
@@ -112,7 +139,8 @@ export default function ParticleField({ params, onMetricsUpdate }) {
       while (s.particles.length < targetCount) s.particles.push(spawnParticle(false));
       if (s.particles.length > targetCount) s.particles.length = targetCount;
 
-      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = s.colors.bg;
+      ctx.fillRect(0, 0, w, h);
 
       const decayRate  = 0.00035 + (1 - decay) * 0.0012;
       const orbitDrive = ORBIT_DRIVE * flow;
@@ -173,7 +201,7 @@ export default function ParticleField({ params, onMetricsUpdate }) {
 
         ctx.beginPath();
         ctx.arc(x, y, Math.max(0.35, radius), 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(26,25,23,${alpha.toFixed(3)})`;
+        ctx.fillStyle = `rgba(${s.colors.inkRGB},${alpha.toFixed(3)})`;
         ctx.fill();
 
         buckets[Math.min(Math.floor((x / w) * 3), 2)]++;
@@ -197,7 +225,7 @@ export default function ParticleField({ params, onMetricsUpdate }) {
   return (
     <canvas
       ref={canvasRef}
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block', backgroundColor: '#f6f4f0' }}
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
     />
   );
 }

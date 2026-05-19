@@ -11,5 +11,5 @@
   border: 1px solid color-mix(in srgb, var(--ink-faint) 72%, transparent);
   border-radius: 6px;
   box-shadow: 0 12px 34px color-mix(in srgb, var(--ink) 9%, transparent);
-  background: #fff;
+  background: var(--bg);
 }

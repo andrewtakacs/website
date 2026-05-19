@@ -12,7 +12,6 @@ const Software = lazy(() => import('./pages/Software'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Certificates = lazy(() => import('./pages/Certificates'));
-const SecretPage = lazy(() => import('./pages/SecretPage'));
 const Oscilloscope = lazy(() => import('./pages/Oscilloscope'));
 const PortfolioWebsite = lazy(() => import('./pages/PortfolioWebsite'));
 const EMotorProject = lazy(() => import('./pages/EMotorProject'));
@@ -48,7 +47,6 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/certificates" element={<Certificates />} />
-              <Route path="/secret" element={<SecretPage />} />
               <Route path="/oscilloscope" element={<Oscilloscope />} />
               <Route path="/projects/portfolio-website" element={<PortfolioWebsite />} />
               <Route path="/emotor-project" element={<EMotorProject />} />

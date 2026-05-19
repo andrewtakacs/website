@@ -18,19 +18,36 @@
 }
 
 .navbar-back {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.04em;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  -webkit-text-stroke: 0.5px currentColor;
   color: var(--ink-dim);
   cursor: pointer;
   background: none;
   border: none;
   padding: 0;
-  transition: color 0.15s;
+  transition: color 0.15s, transform 0.15s;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  margin-right: auto;
 }
 
 .navbar-back:hover {
+  color: var(--ink);
+  transform: translateX(-2px);
+}
+
+.navbar-theme {
+  display: flex;
+  align-items: center;
+  color: var(--ink-dim);
+  transition: color 0.15s;
+  padding: 0;
+}
+
+.navbar-theme:hover {
   color: var(--ink);
 }
 

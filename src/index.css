@@ -1,4 +1,6 @@
 :root {
+  color-scheme: light;
+
   --bg:        #f6f4f0;
   --ink:       #181715;
   --ink-dim:   #6B6863;
@@ -11,6 +13,38 @@
 
   --unit: 1.5rem;
   --hud-pad: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg:        #1e1e1e;
+    --ink:       #d4d4d4;
+    --ink-dim:   #858585;
+    --ink-faint: #3e3e42;
+    --accent:    #d4693a;
+    --surface:   #252526;
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:        #1e1e1e;
+  --ink:       #d4d4d4;
+  --ink-dim:   #858585;
+  --ink-faint: #3e3e42;
+  --accent:    #d4693a;
+  --surface:   #252526;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg:        #f6f4f0;
+  --ink:       #181715;
+  --ink-dim:   #6B6863;
+  --ink-faint: #C4C0B8;
+  --accent:    #B8581A;
+  --surface:   #DEDAD2;
 }
 
 *, *::before, *::after {

@@ -110,9 +110,9 @@ const Oscilloscope = () => {
             <h3>Links</h3>
             <p>
               <br />
-              <a href="https://www.youtube.com/watch?v=4gibcRfp4zA&t=2s" target="_blank" rel="noopener noreferrer" style={{ color: 'black' }}>Inspiration - YouTube</a>
+              <a href="https://www.youtube.com/watch?v=4gibcRfp4zA&t=2s" target="_blank" rel="noopener noreferrer">Inspiration - YouTube</a>
               <br />
-              <a href="https://www.youtube.com/watch?v=r6sGWTCMz2k" target="_blank" rel="noopener noreferrer" style={{ color: 'black' }}>Fourier Series - YouTube</a>
+              <a href="https://www.youtube.com/watch?v=r6sGWTCMz2k" target="_blank" rel="noopener noreferrer">Fourier Series - YouTube</a>
             </p>
           </div>
         </section>

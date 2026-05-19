@@ -3,12 +3,12 @@
   align-items: baseline;
   justify-content: space-between;
   padding-top: 3rem;
+  padding-bottom: 0.75rem;
 }
 
 .hardware-page .page-header .page-label {
   font-size: 0.75rem;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--ink);
 }
 
@@ -61,6 +61,7 @@
   border: 1px solid var(--ink-faint);
   display: block;
   flex-shrink: 0;
+  background: #f6f4f0;
 }
 
 .project-thumb-placeholder {

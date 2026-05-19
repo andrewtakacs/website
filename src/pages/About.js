@@ -104,14 +104,14 @@ const experience = [
 export default function About() {
   return (
     <div className="inner-page about-page">
+      <div className="page-header">
+        <span className="page-label">about</span>
+      </div>
 
-      <hr className="rule" />
+      <hr className="rule" style={{ margin: 0 }} />
 
       <section className="about-section">
-        <div className="section-header">
-          <span className="section-label">EXPERIENCE</span>
-          <hr className="section-rule" />
-        </div>
+        <span className="section-label">experience</span>
         <div className="exp-list">
           {experience.map((e, i) => (
             <div key={i} className="exp-entry">
@@ -129,13 +129,10 @@ export default function About() {
         </div>
       </section>
 
-      <hr className="rule" />
+      <hr className="rule" style={{ margin: 0 }} />
 
       <section className="about-section">
-        <div className="section-header">
-          <span className="section-label">EDUCATION</span>
-          <hr className="section-rule" />
-        </div>
+        <span className="section-label">education</span>
         <div className="edu-list">
           {education.map((e, i) => (
             <div key={i} className="edu-entry">
@@ -153,13 +150,10 @@ export default function About() {
         </div>
       </section>
 
-      <hr className="rule" />
+      <hr className="rule" style={{ margin: 0 }} />
 
       <section className="about-section">
-        <div className="section-header">
-          <span className="section-label">SKILLS</span>
-          <hr className="section-rule" />
-        </div>
+        <span className="section-label">skills</span>
         <div className="skills-row">
           {[...skills.technical, ...skills.engineering].map((s, i) => (
             typeof s === 'string' ? (

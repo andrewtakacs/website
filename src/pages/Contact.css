@@ -1,44 +1,31 @@
-.contact-page .contact-header {
-  padding-top: 3rem;
-  padding-bottom: 1.5rem;
-}
-
-.contact-links {
+.contact-page .page-header {
   display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.contact-row {
-  display: grid;
-  grid-template-columns: 6rem 1fr;
   align-items: baseline;
-  gap: 1rem;
-  padding: 0.9rem 0;
-  border-bottom: 1px solid var(--ink-faint);
+  justify-content: space-between;
+  padding-top: 3rem;
+  padding-bottom: 0.75rem;
 }
 
-.contact-label {
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
-}
-
-.contact-link {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+.contact-page .page-header .page-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
   color: var(--ink);
+}
+
+.contact-icons {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.contact-icon-link {
+  color: var(--ink-dim);
   text-decoration: none;
-  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
   transition: color 0.15s;
 }
 
-.contact-link:hover {
+.contact-icon-link:hover {
   color: var(--accent);
-}
-
-@media (max-width: 480px) {
-  .contact-row {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
-  }
 }

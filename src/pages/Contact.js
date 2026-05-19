@@ -1,50 +1,33 @@
-import { useEffect, useRef } from 'react';
 import './Contact.css';
+import { IconLinkedIn, IconGitHub, IconYouTube } from '../components/Icons';
 
 const LINKS = [
-  { label: 'github',   href: 'https://github.com/andrewtakacs',                display: 'github.com/andrewtakacs' },
-  { label: 'linkedin', href: 'https://www.linkedin.com/in/takacsandrew/',       display: 'linkedin.com/in/takacsandrew' },
-  { label: 'youtube',  href: 'https://www.youtube.com/@andrewtakacs9957',       display: 'youtube.com/@andrewtakacs9957' },
+  { icon: <IconLinkedIn size={22} />, label: 'LinkedIn',  href: 'https://www.linkedin.com/in/takacsandrew/' },
+  { icon: <IconGitHub   size={22} />, label: 'GitHub',    href: 'https://github.com/andrewtakacs' },
+  { icon: <IconYouTube  size={22} />, label: 'YouTube',   href: 'https://www.youtube.com/@andrewtakacs9957' },
 ];
-
-function EmailLink() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const u = atob('YW5kcmV3ZHRha2Fjc0Bob3RtYWlsLmNvbQ==');
-    if (ref.current) {
-      ref.current.href = 'mailto:' + u;
-      ref.current.textContent = u;
-    }
-  }, []);
-  return <a ref={ref} className="contact-link" aria-label="Email" href="#">&nbsp;</a>;
-}
 
 export default function Contact() {
   return (
     <div className="inner-page contact-page">
-      <div className="contact-header">
+      <div className="page-header">
         <span className="page-label">contact</span>
       </div>
 
-      <hr className="rule" />
+      <hr className="rule" style={{ margin: 0 }} />
 
-      <div className="contact-links">
-        <div className="contact-row">
-          <span className="contact-label dim">email</span>
-          <EmailLink />
-        </div>
-        {LINKS.map(({ label, href, display }) => (
-          <div key={label} className="contact-row">
-            <span className="contact-label dim">{label}</span>
-            <a
-              className="contact-link"
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {display}
-            </a>
-          </div>
+      <div className="contact-icons">
+        {LINKS.map(({ icon, label, href }) => (
+          <a
+            key={label}
+            className="contact-icon-link"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+          >
+            {icon}
+          </a>
         ))}
       </div>
     </div>

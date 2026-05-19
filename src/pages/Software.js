@@ -13,7 +13,7 @@ export default function Software() {
         <span className="page-count dim">[{SORTED.length} items]</span>
       </div>
 
-      <hr className="rule" />
+      <hr className="rule" style={{ margin: 0 }} />
 
       <div className="project-list">
         {SORTED.map((p, idx) => {
